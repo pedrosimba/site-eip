@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Détection d'opportunités de reprise d'entreprises — EIP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1f38;
+    --paper: #f6f1e7;
+    --accent: #c9a24b;
+    --muted: #5a6478;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+  }
+  header {
+    padding: 24px 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 6vw 80px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 28px;
+  }
+  p {
+    font-size: 1.05rem;
+    margin: 0 0 20px;
+  }
+  section.contact {
+    margin-top: 48px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 36px;
+  }
+  section.contact h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0 0 20px;
+  }
+  form {
+    display: grid;
+    gap: 14px;
+  }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: var(--paper);
+    opacity: 0.85;
+  }
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.95rem;
+  }
+  button {
+    margin-top: 8px;
+    background: var(--accent);
+    color: var(--ink);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  button:hover { opacity: 0.92; }
+  .back-link {
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">EIP — Economic Intelligence Partners</a>
+</header>
+
+<main>
+  <h1>Détection d'opportunités de reprise d'entreprises</h1>
+
+  <p>Chaque année, des entreprises viables traversent des difficultés qui ne se voient pas encore de l'extérieur — retard de paiement, procédure collective en cours, activité en repli. Le temps d'agir est souvent plus court qu'on ne le pense.</p>
+
+  <p>EIP identifie ces situations tôt, à partir de signaux publics et économiques, pour permettre à des repreneurs et investisseurs d'agir avant que l'opportunité ne devienne visible de tous.</p>
+
+  <p>Concrètement : laissez vos coordonnées et votre profil de recherche. EIP vous contacte prioritairement pour vous présenter son service de détection d'opportunités. Les alertes personnalisées sont ensuite transmises dans le cadre de la mission de détection.</p>
+
+  <p>Cette approche s'adresse à des repreneurs, holdings, fonds ou dirigeants en recherche de croissance externe, qui veulent être informés avant la concurrence plutôt qu'après.</p>
+
+  <section class="contact">
+    <h2>Être contacté en priorité</h2>
+    <form action="https://formspree.io/f/xbgrnkgp" method="POST">
+      <div>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone">
+      </div>
+      <div>
+        <label for="secteur">Secteur d'intérêt</label>
+        <input type="text" id="secteur" name="secteur" placeholder="ex. BTP, logistique, industrie métallique...">
+      </div>
+      <div>
+        <label for="zone">Zone géographique visée pour la reprise</label>
+        <input type="text" id="zone" name="zone" placeholder="ex. France entière, Hauts-de-France, Wallonie...">
+      </div>
+      <button type="submit">Envoyer ma demande</button>
+    </form>
+  </section>
+
+  <a class="back-link" href="index.html">← Retour à l'accueil</a>
+</main>
+
+</body>
+</html>
