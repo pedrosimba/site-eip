@@ -201,6 +201,16 @@
     font-weight:500;
   }
 
+  .featured-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+
+  @media (max-width:760px){
+    .featured-grid{ grid-template-columns:1fr; }
+  }
+
   /* ---------- reach ---------- */
 
   .reach{
@@ -322,9 +332,18 @@
 
   <section class="featured">
     <p class="section-label">Notre expertise phare</p>
-    <h2>Détection d'opportunités de reprise d'entreprises</h2>
-    <p>Une entreprise en difficulté aujourd'hui peut être une opportunité de croissance externe demain — à condition d'être identifiée à temps. Nous surveillons les procédures collectives en France et en Belgique pour repérer les dossiers pertinents, avant qu'ils ne deviennent visibles de tous.</p>
-    <a href="reprise-entreprises.html" class="featured-cta">Être alerté en priorité</a>
+    <div class="featured-grid">
+      <div>
+        <h2>Détection d'opportunités de reprise d'entreprises</h2>
+        <p>Une entreprise en difficulté aujourd'hui peut être une opportunité de croissance externe demain — à condition d'être identifiée à temps. Nous surveillons les procédures collectives en France et en Belgique pour repérer les dossiers pertinents, avant qu'ils ne deviennent visibles de tous.</p>
+        <a href="reprise-entreprises.html" class="featured-cta">Être alerté en priorité</a>
+      </div>
+      <div>
+        <h2>Décret Tertiaire : ciblez les bâtiments à rénover</h2>
+        <p>EIP identifie les bâtiments tertiaires soumis à l'obligation de travaux du décret tertiaire, en croisant les données DPE et SIRENE pour cibler précisément les biens concernés.</p>
+        <a href="decret-tertiaire.html" class="featured-cta">Découvrir l'offre</a>
+      </div>
+    </div>
   </section>
 
   <section class="branches">
