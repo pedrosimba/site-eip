@@ -178,33 +178,38 @@
   .featured{
     background:var(--ink);
     color:var(--paper);
-    padding:40px 32px;
+    padding:40px 24px;
     border-radius:4px;
     margin:48px 0;
+    width:100vw;
+    max-width:1100px;
+    margin-left:auto;
+    margin-right:auto;
   }
   .featured .section-label{ color:var(--accent); }
   .featured h2{
     font-family:'Fraunces', serif;
     font-weight:500;
-    font-size:1.7rem;
-    margin:8px 0 16px;
+    font-size:1.35rem;
+    margin:8px 0 12px;
     color:var(--paper);
   }
-  .featured p{ color:var(--paper); opacity:0.9; margin:0 0 20px; font-size:1.05rem; }
+  .featured p{ color:var(--paper); opacity:0.9; margin:0 0 16px; font-size:0.95rem; }
   .featured-cta{
     display:inline-block;
     background:var(--accent);
     color:var(--ink);
-    padding:12px 24px;
+    padding:10px 18px;
     border-radius:2px;
     text-decoration:none;
     font-weight:500;
+    font-size:0.9rem;
   }
 
   .featured-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:32px;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
   }
 
   @media (max-width:760px){
@@ -331,12 +336,17 @@
   </section>
 
   <section class="featured">
-    <p class="section-label">Notre expertise phare</p>
     <div class="featured-grid">
       <div>
         <h2>Détection d'opportunités de reprise d'entreprises</h2>
         <p>Une entreprise en difficulté aujourd'hui peut être une opportunité de croissance externe demain — à condition d'être identifiée à temps. Nous surveillons les procédures collectives en France et en Belgique pour repérer les dossiers pertinents, avant qu'ils ne deviennent visibles de tous.</p>
         <a href="reprise-entreprises.html" class="featured-cta">Être alerté en priorité</a>
+      </div>
+      <div>
+        <p class="section-label">Notre expertise phare</p>
+        <h2>Veille économique (Belgique)</h2>
+        <p>EIP surveille en continu les marchés publics, signaux réglementaires et opportunités économiques par secteur, pour vous alerter avant que l'information ne devienne visible de tous.</p>
+        <a href="veille-belgique.html" class="featured-cta">Découvrir l'offre</a>
       </div>
       <div>
         <h2>Décret Tertiaire (France) : ciblez les bâtiments à rénover</h2>
