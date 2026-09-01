@@ -207,6 +207,7 @@
     text-decoration:none;
     font-weight:500;
     font-size:0.9rem;
+    margin-top:auto;
   }
 
   .featured-grid{
@@ -216,6 +217,8 @@
   }
   .featured-grid > div{
     min-width:0;
+    display:flex;
+    flex-direction:column;
   }
 
   @media (max-width:760px){
@@ -345,20 +348,22 @@
   <section class="featured">
     <div class="featured-grid">
       <div>
-        <h2>Détection d'opportunités de reprise d'entreprises</h2>
-        <p>Une entreprise en difficulté aujourd'hui peut constituer, demain, une opportunité de croissance externe — à condition d'être identifiée à temps. Nous suivons les procédures collectives en France et en Belgique afin de repérer les dossiers pertinents, avant qu'ils ne deviennent visibles de tous.</p>
+        <p class="section-label">Reprise d'entreprises (France / Belgique)</p>
+        <h2>Une opportunité de croissance externe, repérée avant qu'elle ne devienne visible</h2>
+        <p>Ex. : commerce en procédure de sauvegarde, repreneur recherché, région à préciser.</p>
         <a href="reprise-entreprises.html" class="featured-cta">Être informé en priorité</a>
       </div>
       <div>
-        <p class="section-label">Notre expertise phare</p>
-        <h2>Veille économique (Belgique)</h2>
-        <p>EIP suit en continu les marchés publics, signaux réglementaires et opportunités économiques par secteur, afin de porter à votre connaissance ce qui vous concerne avant que l'information ne devienne publique.</p>
-        <a href="veille-belgique.html" class="featured-cta">Nous consulter</a>
+        <p class="section-label">Décret Tertiaire (France)</p>
+        <h2>Ciblez les bâtiments tertiaires soumis à l'obligation de travaux</h2>
+        <p>Ex. : bâtiment tertiaire de plus de 1000m², étiquette énergétique F, identifié sur votre zone.</p>
+        <a href="decret-tertiaire.html" class="featured-cta">Nous consulter</a>
       </div>
       <div>
-        <h2>Décret Tertiaire (France) : ciblez les bâtiments à rénover</h2>
-        <p>EIP identifie les bâtiments tertiaires soumis à l'obligation de travaux du Décret Tertiaire, en croisant les données DPE et SIRENE afin de cibler précisément les biens concernés.</p>
-        <a href="decret-tertiaire.html" class="featured-cta">Nous consulter</a>
+        <p class="section-label">Veille économique</p>
+        <h2>Ce qui vous concerne, avant que l'information ne devienne publique</h2>
+        <p>Marchés publics, signaux réglementaires et tendances sectorielles, suivis en continu en Belgique et en France.</p>
+        <a href="veille-belgique.html" class="featured-cta">Nous consulter</a>
       </div>
     </div>
   </section>
