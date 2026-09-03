@@ -269,7 +269,7 @@
 
   .contact-grid{
     display:grid;
-    grid-template-columns:repeat(2, minmax(0,1fr));
+    grid-template-columns:max-content 1fr;
     gap:48px 64px;
   }
 
@@ -306,6 +306,10 @@
 
   @media (max-width:480px){
     .contact-item a{ font-size:1.28rem; }
+  }
+
+  @media (max-width:560px){
+    .contact-grid{ grid-template-columns:1fr; }
   }
 
   a:focus-visible{
