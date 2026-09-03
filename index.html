@@ -273,6 +273,13 @@
     gap:48px 64px;
   }
 
+  .contact-col{
+    display:flex;
+    flex-direction:column;
+    gap:48px;
+    min-width:0;
+  }
+
   .contact-item{ min-width:0; }
 
   .contact-item-label{
@@ -409,21 +416,25 @@
     <p class="section-label">Contact</p>
     <div class="contact-name">Pierre Ombessa</div>
     <div class="contact-grid">
-      <div class="contact-item">
-        <p class="contact-item-label">Adresse mail</p>
-        <a href="mailto:pierre@eipdecision.be">pierre@eipdecision.be</a>
+      <div class="contact-col">
+        <div class="contact-item">
+          <p class="contact-item-label">Adresse mail</p>
+          <a href="mailto:pierre@eipdecision.be">pierre@eipdecision.be</a>
+        </div>
+        <div class="contact-item">
+          <p class="contact-item-label">GSM (Belgique)</p>
+          <a href="tel:+32470284953">+32 470 28 49 53</a>
+        </div>
+        <div class="contact-item">
+          <p class="contact-item-label">Téléphone (France)</p>
+          <a href="tel:+33698814363">+33 6 98 81 43 63</a>
+        </div>
       </div>
-      <div class="contact-item">
-        <p class="contact-item-label">GSM (Belgique)</p>
-        <a href="tel:+32470284953">+32 470 28 49 53</a>
-      </div>
-      <div class="contact-item">
-        <p class="contact-item-label">Téléphone (France)</p>
-        <a href="tel:+33698814363">+33 6 98 81 43 63</a>
-      </div>
-      <div class="contact-item">
-        <p class="contact-item-label">TVA</p>
-        <span>BE 0839 627 446</span>
+      <div class="contact-col">
+        <div class="contact-item">
+          <p class="contact-item-label">TVA</p>
+          <span>BE 0839 627 446</span>
+        </div>
       </div>
     </div>
   </section>
