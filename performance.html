@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zéro Appel Manqué / Relance Devis — EIP</title>
+<meta name="description" content="Un appel manqué sur chantier ? Un devis resté sans réponse ? EIP reprend le contact et relance vos devis pour vous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F1B33;
+    --paper: #F5F2EA;
+    --accent: #C9974A;
+    --muted: #565A66;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+  }
+  header {
+    padding: 24px 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 6vw 80px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 12px;
+  }
+  .subtitle {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 28px;
+  }
+  p {
+    font-size: 1.05rem;
+    margin: 0 0 20px;
+  }
+  section.contact {
+    margin-top: 48px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 36px;
+  }
+  section.contact h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0 0 20px;
+  }
+  form {
+    display: grid;
+    gap: 14px;
+  }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: var(--paper);
+    opacity: 0.85;
+  }
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.95rem;
+  }
+  button {
+    margin-top: 8px;
+    background: var(--accent);
+    color: var(--ink);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  button:hover { opacity: 0.92; }
+  .back-link {
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">EIP — Economic Intelligence Partners</a>
+</header>
+
+<main>
+  <h1>Nous récupérons pour vous les opportunités inaperçues.</h1>
+  <p class="subtitle">Zéro Appel Manqué / Relance Devis</p>
+
+  <p>Sur un chantier, un appel qui sonne dans le vide, c'est souvent un client qui a déjà appelé quelqu'un d'autre. Un devis envoyé puis oublié, c'est une affaire qui part chez le concurrent sans même une relance.</p>
+
+  <p>Un appel manqué ? Nous reprenons le contact par SMS. Un devis sans réponse ? Nous le relançons automatiquement.</p>
+
+  <p>49€ HT/mois — moins que ce que coûte un seul chantier perdu. Essai 30 jours, sans engagement, sans carte bancaire.</p>
+
+  <p>Vous travaillez. Nous récupérons vos opportunités. Vous partez en vacances. Nous continuons à travailler pour vous.</p>
+
+  <p>Pensé au départ pour les plombiers — un appel manqué peut être une fuite d'eau qui n'attend pas — le service s'adresse aussi aux chauffagistes, électriciens, couvreurs, installateurs HVAC, photovoltaïque, et à tout métier du chantier où un rendez-vous manqué se transforme vite en client perdu.</p>
+
+  <section class="contact">
+    <h2>Démarrer mon essai de 30 jours</h2>
+    <form action="https://formspree.io/f/mdeorwob" method="POST">
+      <div>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone">
+      </div>
+      <div>
+        <label for="metier">Métier</label>
+        <input type="text" id="metier" name="metier" placeholder="ex. plombier, chauffagiste, électricien...">
+      </div>
+      <div>
+        <label for="entreprise">Nom de l'entreprise</label>
+        <input type="text" id="entreprise" name="entreprise">
+      </div>
+      <button type="submit">Démarrer mon essai gratuit</button>
+    </form>
+  </section>
+
+  <a class="back-link" href="index.html">← Retour à l'accueil</a>
+</main>
+
+</body>
+</html>
