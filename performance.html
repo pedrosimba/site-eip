@@ -109,57 +109,186 @@
     font-size: 0.9rem;
     text-decoration: none;
   }
+  .lang-switch {
+    display: flex;
+    gap: 6px;
+  }
+  .lang-btn {
+    background: none;
+    border: 1px solid var(--muted);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+  .lang-btn:hover { opacity: 0.85; }
+  .lang-btn.active {
+    opacity: 1;
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
 </style>
 </head>
 <body>
 
 <header>
   <a href="index.html">EIP — Economic Intelligence Partners</a>
+  <nav class="lang-switch" aria-label="Choix de la langue">
+    <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="nl">NL</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </nav>
 </header>
 
 <main>
-  <h1>Nous récupérons pour vous les opportunités inaperçues.</h1>
-  <p class="subtitle">Zéro Appel Manqué / Relance Devis</p>
+  <h1 data-i18n="h1">Nous récupérons pour vous les opportunités inaperçues.</h1>
+  <p class="subtitle" data-i18n="subtitle">Zéro Appel Manqué / Relance Devis</p>
 
-  <p>Sur un chantier, un appel qui sonne dans le vide, c'est souvent un client qui a déjà appelé quelqu'un d'autre. Un devis envoyé puis oublié, c'est une affaire qui part chez le concurrent sans même une relance.</p>
+  <p data-i18n="p1">Sur un chantier, un appel qui sonne dans le vide, c'est souvent un client qui a déjà appelé quelqu'un d'autre. Un devis envoyé puis oublié, c'est une affaire qui part chez le concurrent sans même une relance.</p>
 
-  <p>Un appel manqué ? Nous reprenons le contact par SMS. Un devis sans réponse ? Nous le relançons automatiquement.</p>
+  <p data-i18n="p2">Un appel manqué ? Nous reprenons le contact par SMS. Un devis sans réponse ? Nous le relançons automatiquement.</p>
 
-  <p>49€ HT/mois — moins que ce que coûte un seul chantier perdu. Essai 30 jours, sans engagement, sans carte bancaire.</p>
+  <p data-i18n="p3">49€ HT/mois — moins que ce que coûte un seul chantier perdu. Essai 30 jours, sans engagement, sans carte bancaire.</p>
 
-  <p>Vous travaillez. Nous récupérons vos opportunités. Vous partez en vacances. Nous continuons à travailler pour vous.</p>
+  <p data-i18n="p4">Vous travaillez. Nous récupérons vos opportunités. Vous partez en vacances. Nous continuons à travailler pour vous.</p>
 
-  <p>Pensé au départ pour les plombiers — un appel manqué peut être une fuite d'eau qui n'attend pas — le service s'adresse aussi aux chauffagistes, électriciens, couvreurs, installateurs HVAC, photovoltaïque, et à tout métier du chantier où un rendez-vous manqué se transforme vite en client perdu.</p>
+  <p data-i18n="p5">Pensé au départ pour les plombiers — un appel manqué peut être une fuite d'eau qui n'attend pas — le service s'adresse aussi aux chauffagistes, électriciens, couvreurs, installateurs HVAC, photovoltaïque, et à tout métier du chantier où un rendez-vous manqué se transforme vite en client perdu.</p>
 
   <section class="contact">
-    <h2>Démarrer mon essai de 30 jours</h2>
+    <h2 data-i18n="contactH2">Démarrer mon essai de 30 jours</h2>
     <form action="https://formspree.io/f/mdeorwob" method="POST">
       <div>
-        <label for="nom">Nom</label>
+        <label for="nom" data-i18n="labelNom">Nom</label>
         <input type="text" id="nom" name="nom" required>
       </div>
       <div>
-        <label for="email">Email</label>
+        <label for="email" data-i18n="labelEmail">Email</label>
         <input type="email" id="email" name="email" required>
       </div>
       <div>
-        <label for="telephone">Téléphone</label>
+        <label for="telephone" data-i18n="labelTelephone">Téléphone</label>
         <input type="tel" id="telephone" name="telephone">
       </div>
       <div>
-        <label for="metier">Métier</label>
-        <input type="text" id="metier" name="metier" placeholder="ex. plombier, chauffagiste, électricien...">
+        <label for="metier" data-i18n="labelMetier">Métier</label>
+        <input type="text" id="metier" name="metier" data-i18n-placeholder="metierPlaceholder" placeholder="ex. plombier, chauffagiste, électricien...">
       </div>
       <div>
-        <label for="entreprise">Nom de l'entreprise</label>
+        <label for="entreprise" data-i18n="labelEntreprise">Nom de l'entreprise</label>
         <input type="text" id="entreprise" name="entreprise">
       </div>
-      <button type="submit">Démarrer mon essai gratuit</button>
+      <button type="submit" data-i18n="cta">Démarrer mon essai gratuit</button>
     </form>
   </section>
 
-  <a class="back-link" href="index.html">← Retour à l'accueil</a>
+  <a class="back-link" href="index.html" data-i18n="backLink">← Retour à l'accueil</a>
 </main>
+
+<script>
+(function () {
+  var translations = {
+    fr: {
+      title: "Zéro Appel Manqué / Relance Devis — EIP",
+      description: "Un appel manqué sur chantier ? Un devis resté sans réponse ? EIP reprend le contact et relance vos devis pour vous.",
+      h1: "Nous récupérons pour vous les opportunités inaperçues.",
+      subtitle: "Zéro Appel Manqué / Relance Devis",
+      p1: "Sur un chantier, un appel qui sonne dans le vide, c'est souvent un client qui a déjà appelé quelqu'un d'autre. Un devis envoyé puis oublié, c'est une affaire qui part chez le concurrent sans même une relance.",
+      p2: "Un appel manqué ? Nous reprenons le contact par SMS. Un devis sans réponse ? Nous le relançons automatiquement.",
+      p3: "49€ HT/mois — moins que ce que coûte un seul chantier perdu. Essai 30 jours, sans engagement, sans carte bancaire.",
+      p4: "Vous travaillez. Nous récupérons vos opportunités. Vous partez en vacances. Nous continuons à travailler pour vous.",
+      p5: "Pensé au départ pour les plombiers — un appel manqué peut être une fuite d'eau qui n'attend pas — le service s'adresse aussi aux chauffagistes, électriciens, couvreurs, installateurs HVAC, photovoltaïque, et à tout métier du chantier où un rendez-vous manqué se transforme vite en client perdu.",
+      contactH2: "Démarrer mon essai de 30 jours",
+      labelNom: "Nom",
+      labelEmail: "Email",
+      labelTelephone: "Téléphone",
+      labelMetier: "Métier",
+      metierPlaceholder: "ex. plombier, chauffagiste, électricien...",
+      labelEntreprise: "Nom de l'entreprise",
+      cta: "Démarrer mon essai gratuit",
+      backLink: "← Retour à l'accueil"
+    },
+    nl: {
+      title: "Gemiste Oproep / Offerte-opvolging — EIP",
+      description: "Een gemiste oproep op de werf? Een offerte zonder antwoord? EIP herneemt het contact en volgt uw offertes voor u op.",
+      h1: "Wij halen de gemiste kansen voor u terug.",
+      subtitle: "Geen Gemiste Oproep meer / Offerte-opvolging",
+      p1: "Op een werf betekent een oproep die onbeantwoord blijft vaak dat de klant al iemand anders heeft gebeld. Een offerte die verstuurd en vergeten wordt, is een opdracht die zonder zelfs maar een opvolging naar de concurrent gaat.",
+      p2: "Oproep gemist? Wij herstellen het contact per sms. Offerte zonder antwoord? Wij volgen ze automatisch op.",
+      p3: "€49 excl. btw/maand — minder dan de kost van één verloren werf. 30 dagen proefperiode, zonder verbintenis, zonder bankkaart.",
+      p4: "U werkt. Wij halen uw kansen terug. U gaat op vakantie. Wij blijven voor u werken.",
+      p5: "Oorspronkelijk bedacht voor loodgieters — een gemiste oproep kan een lek zijn dat niet kan wachten — de dienst is ook geschikt voor verwarmingsinstallateurs, elektriciens, dakdekkers, HVAC-installateurs, fotovoltaïsche installateurs, en elk werfberoep waar een gemiste afspraak snel een verloren klant wordt.",
+      contactH2: "Start mijn proefperiode van 30 dagen",
+      labelNom: "Naam",
+      labelEmail: "E-mail",
+      labelTelephone: "Telefoon",
+      labelMetier: "Beroep",
+      metierPlaceholder: "bv. loodgieter, verwarmingsinstallateur, elektricien...",
+      labelEntreprise: "Bedrijfsnaam",
+      cta: "Start mijn gratis proefperiode",
+      backLink: "← Terug naar home"
+    },
+    en: {
+      title: "Missed Call / Quote Follow-up — EIP",
+      description: "A missed call on site? A quote left unanswered? EIP reconnects with your customers and follows up your quotes for you.",
+      h1: "We recover the opportunities you'd otherwise miss.",
+      subtitle: "Zero Missed Call / Quote Follow-up",
+      p1: "On a job site, a call ringing out often means the customer has already called someone else. A quote sent and forgotten is a job that goes to a competitor without so much as a follow-up.",
+      p2: "Missed a call? We reconnect by SMS. Quote left unanswered? We follow it up automatically.",
+      p3: "€49 excl. VAT/month — less than the cost of a single lost job. 30-day trial, no commitment, no credit card.",
+      p4: "You work. We recover your opportunities. You go on holiday. We keep working for you.",
+      p5: "Built first for plumbers — a missed call can mean a leak that can't wait — the service also fits heating engineers, electricians, roofers, HVAC installers, solar installers, and any trade where a missed appointment quickly turns into a lost customer.",
+      contactH2: "Start my 30-day trial",
+      labelNom: "Name",
+      labelEmail: "Email",
+      labelTelephone: "Phone",
+      labelMetier: "Trade",
+      metierPlaceholder: "e.g. plumber, heating engineer, electrician...",
+      labelEntreprise: "Company name",
+      cta: "Start my free trial",
+      backLink: "← Back to home"
+    }
+  };
+
+  function applyLanguage(lang) {
+    var dict = translations[lang] || translations.fr;
+    document.documentElement.setAttribute('lang', lang);
+    document.title = dict.title;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', dict.description);
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    try { localStorage.setItem('eip-lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyLanguage(btn.getAttribute('data-lang'));
+    });
+  });
+
+  var saved;
+  try { saved = localStorage.getItem('eip-lang'); } catch (e) {}
+  if (saved && translations[saved]) {
+    applyLanguage(saved);
+  }
+})();
+</script>
 
 </body>
 </html>

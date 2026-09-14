@@ -128,64 +128,197 @@
     font-size: 0.9rem;
     text-decoration: none;
   }
+  .lang-switch {
+    display: flex;
+    gap: 6px;
+  }
+  .lang-btn {
+    background: none;
+    border: 1px solid var(--muted);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+  .lang-btn:hover { opacity: 0.85; }
+  .lang-btn.active {
+    opacity: 1;
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
 </style>
 </head>
 <body>
 
 <header>
   <a href="index.html">EIP — Economic Intelligence Partners</a>
+  <nav class="lang-switch" aria-label="Choix de la langue">
+    <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+    <button type="button" class="lang-btn" data-lang="nl">NL</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </nav>
 </header>
 
 <main>
-  <h1>Rejoignez l'Espace Partenaires EIP.</h1>
-  <p class="subtitle">Souscription Espace Partenaires</p>
+  <h1 data-i18n="h1">Rejoignez l'Espace Partenaires EIP.</h1>
+  <p class="subtitle" data-i18n="subtitle">Souscription Espace Partenaires</p>
 
-  <p>Inscrivez votre entreprise, choisissez votre formule et personnalisez votre présence sur l'Espace Partenaires.</p>
+  <p data-i18n="p1">Inscrivez votre entreprise, choisissez votre formule et personnalisez votre présence sur l'Espace Partenaires.</p>
 
   <section class="contact">
-    <h2>Souscrire à l'Espace Partenaires</h2>
+    <h2 data-i18n="contactH2">Souscrire à l'Espace Partenaires</h2>
     <form action="https://formspree.io/f/xbgrnkgp" method="POST" enctype="multipart/form-data">
       <div>
-        <label for="entreprise">Nom de l'entreprise</label>
+        <label for="entreprise" data-i18n="labelEntreprise">Nom de l'entreprise</label>
         <input type="text" id="entreprise" name="entreprise" required>
       </div>
       <div>
-        <label for="secteur">Secteur d'activité</label>
-        <input type="text" id="secteur" name="secteur" placeholder="ex. plomberie, électricité, HVAC..." required>
+        <label for="secteur" data-i18n="labelSecteur">Secteur d'activité</label>
+        <input type="text" id="secteur" name="secteur" data-i18n-placeholder="secteurPlaceholder" placeholder="ex. plomberie, électricité, HVAC..." required>
       </div>
       <div>
-        <label for="email">Email</label>
+        <label for="email" data-i18n="labelEmail">Email</label>
         <input type="email" id="email" name="email" required>
       </div>
       <div>
-        <label for="telephone">Téléphone</label>
+        <label for="telephone" data-i18n="labelTelephone">Téléphone</label>
         <input type="tel" id="telephone" name="telephone">
       </div>
       <div>
-        <label for="formule">Formule</label>
+        <label for="formule" data-i18n="labelFormule">Formule</label>
         <select id="formule" name="formule" required>
-          <option value="" disabled selected>Choisir une formule</option>
-          <option value="simple">Formule Simple (60€ HT/mois)</option>
-          <option value="exclusivite">Formule Exclusivité totale (280€ HT/mois)</option>
+          <option value="" disabled selected data-i18n="optionDefault">Choisir une formule</option>
+          <option value="simple" data-i18n="optionSimple">Formule Simple (60€ HT/mois)</option>
+          <option value="exclusivite" data-i18n="optionExclusivite">Formule Exclusivité totale (280€ HT/mois)</option>
         </select>
       </div>
       <div>
-        <label for="logo">Logo de l'entreprise</label>
+        <label for="logo" data-i18n="labelLogo">Logo de l'entreprise</label>
         <input type="file" id="logo" name="logo" accept="image/*">
       </div>
       <div>
-        <label for="slogan">Slogan</label>
-        <textarea id="slogan" name="slogan" maxlength="120" placeholder="Votre slogan en quelques mots"></textarea>
+        <label for="slogan" data-i18n="labelSlogan">Slogan</label>
+        <textarea id="slogan" name="slogan" maxlength="120" data-i18n-placeholder="sloganPlaceholder" placeholder="Votre slogan en quelques mots"></textarea>
         <div class="char-count" id="slogan-count">0 / 120</div>
       </div>
-      <button type="submit">Souscrire à l'Espace Partenaires</button>
+      <button type="submit" data-i18n="cta">Souscrire à l'Espace Partenaires</button>
     </form>
   </section>
 
-  <a class="back-link" href="index.html">← Retour à l'accueil</a>
+  <a class="back-link" href="index.html" data-i18n="backLink">← Retour à l'accueil</a>
 </main>
 
 <script>
+(function () {
+  var translations = {
+    fr: {
+      title: "Espace Partenaires — EIP",
+      description: "Rejoignez l'Espace Partenaires EIP : inscrivez votre entreprise et choisissez votre formule.",
+      h1: "Rejoignez l'Espace Partenaires EIP.",
+      subtitle: "Souscription Espace Partenaires",
+      p1: "Inscrivez votre entreprise, choisissez votre formule et personnalisez votre présence sur l'Espace Partenaires.",
+      contactH2: "Souscrire à l'Espace Partenaires",
+      labelEntreprise: "Nom de l'entreprise",
+      labelSecteur: "Secteur d'activité",
+      secteurPlaceholder: "ex. plomberie, électricité, HVAC...",
+      labelEmail: "Email",
+      labelTelephone: "Téléphone",
+      labelFormule: "Formule",
+      optionDefault: "Choisir une formule",
+      optionSimple: "Formule Simple (60€ HT/mois)",
+      optionExclusivite: "Formule Exclusivité totale (280€ HT/mois)",
+      labelLogo: "Logo de l'entreprise",
+      labelSlogan: "Slogan",
+      sloganPlaceholder: "Votre slogan en quelques mots",
+      cta: "Souscrire à l'Espace Partenaires",
+      backLink: "← Retour à l'accueil"
+    },
+    nl: {
+      title: "Partnerportaal — EIP",
+      description: "Word lid van het EIP Partnerportaal: registreer uw bedrijf en kies uw formule.",
+      h1: "Word lid van het EIP Partnerportaal.",
+      subtitle: "Inschrijving Partnerportaal",
+      p1: "Registreer uw bedrijf, kies uw formule en personaliseer uw aanwezigheid op het Partnerportaal.",
+      contactH2: "Inschrijven op het Partnerportaal",
+      labelEntreprise: "Bedrijfsnaam",
+      labelSecteur: "Sector",
+      secteurPlaceholder: "bv. loodgieterij, elektriciteit, HVAC...",
+      labelEmail: "E-mail",
+      labelTelephone: "Telefoon",
+      labelFormule: "Formule",
+      optionDefault: "Kies een formule",
+      optionSimple: "Eenvoudige formule (€60 excl. btw/maand)",
+      optionExclusivite: "Volledige exclusiviteit (€280 excl. btw/maand)",
+      labelLogo: "Bedrijfslogo",
+      labelSlogan: "Slogan",
+      sloganPlaceholder: "Uw slogan in enkele woorden",
+      cta: "Inschrijven op het Partnerportaal",
+      backLink: "← Terug naar home"
+    },
+    en: {
+      title: "Partner Portal — EIP",
+      description: "Join the EIP Partner Portal: register your company and choose your plan.",
+      h1: "Join the EIP Partner Portal.",
+      subtitle: "Partner Portal Subscription",
+      p1: "Register your company, choose your plan, and customize your presence on the Partner Portal.",
+      contactH2: "Subscribe to the Partner Portal",
+      labelEntreprise: "Company name",
+      labelSecteur: "Industry",
+      secteurPlaceholder: "e.g. plumbing, electrical, HVAC...",
+      labelEmail: "Email",
+      labelTelephone: "Phone",
+      labelFormule: "Plan",
+      optionDefault: "Choose a plan",
+      optionSimple: "Simple Plan (€60 excl. VAT/month)",
+      optionExclusivite: "Full Exclusivity Plan (€280 excl. VAT/month)",
+      labelLogo: "Company logo",
+      labelSlogan: "Tagline",
+      sloganPlaceholder: "Your tagline in a few words",
+      cta: "Subscribe to the Partner Portal",
+      backLink: "← Back to home"
+    }
+  };
+
+  function applyLanguage(lang) {
+    var dict = translations[lang] || translations.fr;
+    document.documentElement.setAttribute('lang', lang);
+    document.title = dict.title;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', dict.description);
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    try { localStorage.setItem('eip-lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyLanguage(btn.getAttribute('data-lang'));
+    });
+  });
+
+  var saved;
+  try { saved = localStorage.getItem('eip-lang'); } catch (e) {}
+  if (saved && translations[saved]) {
+    applyLanguage(saved);
+  }
+})();
+
   var sloganField = document.getElementById('slogan');
   var sloganCount = document.getElementById('slogan-count');
   var sloganLimit = sloganField.getAttribute('maxlength');
