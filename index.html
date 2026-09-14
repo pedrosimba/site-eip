@@ -132,6 +132,37 @@
     padding:64px 0 0;
   }
 
+  .branches-grid{
+    width:100vw;
+    max-width:1100px;
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+    padding:0 24px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+
+  .branches-main{
+    grid-column:span 2;
+    min-width:0;
+  }
+
+  .partner-panel{
+    grid-column:span 1;
+    min-width:0;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:22px 20px;
+  }
+
+  @media (max-width:760px){
+    .branches-grid{ grid-template-columns:1fr; }
+    .branches-main{ grid-column:span 1; }
+    .partner-panel{ grid-column:span 1; margin-top:4px; }
+  }
+
   .branch-list{
     border-top:1px solid var(--line);
     display:grid;
@@ -168,7 +199,6 @@
     .branch-list{ grid-template-columns:1fr 1fr; }
     .branch:nth-child(2n){ border-right:none; padding-right:0; }
     .branch:nth-child(odd){ padding-right:20px; }
-    .branch:nth-child(5){ border-right:none; padding-right:0; }
   }
 
   @media (max-width:480px){
@@ -186,8 +216,9 @@
     margin:48px 0;
     width:100vw;
     max-width:1100px;
-    margin-left:auto;
-    margin-right:auto;
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
   }
   .featured .section-label{ color:#B57B21; }
   .featured h2{
@@ -384,25 +415,29 @@
   </section>
 
   <section class="branches">
-    <p class="section-label">Domaines d'analyse</p>
-    <div class="branch-list">
-      <div class="branch">
-        <div class="branch-name">BTP &amp; rénovation énergétique</div>
-        <div class="branch-desc">Dynamiques de marché, dispositifs réglementaires et opportunités sectorielles.</div>
+    <div class="branches-grid">
+      <div class="branches-main">
+        <p class="section-label">Domaines d'analyse</p>
+        <div class="branch-list">
+          <div class="branch">
+            <div class="branch-name">BTP &amp; rénovation énergétique</div>
+            <div class="branch-desc">Dynamiques de marché, dispositifs réglementaires et opportunités sectorielles.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-name">Logistique, transport &amp; distribution</div>
+            <div class="branch-desc">Signaux de marché et évolutions structurantes du secteur.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-name">Économie verte &amp; environnement</div>
+            <div class="branch-desc">Transition, réglementation et positionnement anticipé.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-name">Immobilier commercial &amp; industriel</div>
+            <div class="branch-desc">Entrepôts, locaux d'activité, bureaux — hors résidentiel.</div>
+          </div>
+        </div>
       </div>
-      <div class="branch">
-        <div class="branch-name">Logistique, transport &amp; distribution</div>
-        <div class="branch-desc">Signaux de marché et évolutions structurantes du secteur.</div>
-      </div>
-      <div class="branch">
-        <div class="branch-name">Économie verte &amp; environnement</div>
-        <div class="branch-desc">Transition, réglementation et positionnement anticipé.</div>
-      </div>
-      <div class="branch">
-        <div class="branch-name">Immobilier commercial &amp; industriel</div>
-        <div class="branch-desc">Entrepôts, locaux d'activité, bureaux — hors résidentiel.</div>
-      </div>
-      <div class="branch">
+      <div class="partner-panel">
         <div class="branch-name">Espace Partenaires</div>
         <div class="branch-desc">Votre marque exposée à nos clients — deux formules, un seul partenaire par secteur.</div>
       </div>
