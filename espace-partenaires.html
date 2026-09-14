@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Partenaires — EIP</title>
+<meta name="description" content="Rejoignez l'Espace Partenaires EIP : inscrivez votre entreprise et choisissez votre formule.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F1B33;
+    --paper: #F5F2EA;
+    --accent: #C9974A;
+    --muted: #565A66;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+  }
+  header {
+    padding: 24px 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 6vw 80px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 12px;
+  }
+  .subtitle {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 28px;
+  }
+  p {
+    font-size: 1.05rem;
+    margin: 0 0 20px;
+  }
+  section.contact {
+    margin-top: 48px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 36px;
+  }
+  section.contact h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0 0 20px;
+  }
+  form {
+    display: grid;
+    gap: 14px;
+  }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: var(--paper);
+    opacity: 0.85;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.95rem;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 70px;
+  }
+  input[type="file"] {
+    padding: 8px 12px;
+    background: var(--paper);
+  }
+  .char-count {
+    font-size: 0.8rem;
+    color: var(--paper);
+    opacity: 0.65;
+    text-align: right;
+    margin-top: 2px;
+  }
+  .char-count.limit-reached {
+    color: var(--accent);
+    opacity: 1;
+  }
+  button {
+    margin-top: 8px;
+    background: var(--accent);
+    color: var(--ink);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  button:hover { opacity: 0.92; }
+  .back-link {
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">EIP — Economic Intelligence Partners</a>
+</header>
+
+<main>
+  <h1>Rejoignez l'Espace Partenaires EIP.</h1>
+  <p class="subtitle">Souscription Espace Partenaires</p>
+
+  <p>Inscrivez votre entreprise, choisissez votre formule et personnalisez votre présence sur l'Espace Partenaires.</p>
+
+  <section class="contact">
+    <h2>Souscrire à l'Espace Partenaires</h2>
+    <form action="https://formspree.io/f/xbgrnkgp" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="entreprise">Nom de l'entreprise</label>
+        <input type="text" id="entreprise" name="entreprise" required>
+      </div>
+      <div>
+        <label for="secteur">Secteur d'activité</label>
+        <input type="text" id="secteur" name="secteur" placeholder="ex. plomberie, électricité, HVAC..." required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone">
+      </div>
+      <div>
+        <label for="formule">Formule</label>
+        <select id="formule" name="formule" required>
+          <option value="" disabled selected>Choisir une formule</option>
+          <option value="simple">Formule Simple (60€ HT/mois)</option>
+          <option value="exclusivite">Formule Exclusivité totale (280€ HT/mois)</option>
+        </select>
+      </div>
+      <div>
+        <label for="logo">Logo de l'entreprise</label>
+        <input type="file" id="logo" name="logo" accept="image/*">
+      </div>
+      <div>
+        <label for="slogan">Slogan</label>
+        <textarea id="slogan" name="slogan" maxlength="120" placeholder="Votre slogan en quelques mots"></textarea>
+        <div class="char-count" id="slogan-count">0 / 120</div>
+      </div>
+      <button type="submit">Souscrire à l'Espace Partenaires</button>
+    </form>
+  </section>
+
+  <a class="back-link" href="index.html">← Retour à l'accueil</a>
+</main>
+
+<script>
+  var sloganField = document.getElementById('slogan');
+  var sloganCount = document.getElementById('slogan-count');
+  var sloganLimit = sloganField.getAttribute('maxlength');
+
+  function updateSloganCount() {
+    var length = sloganField.value.length;
+    sloganCount.textContent = length + ' / ' + sloganLimit;
+    sloganCount.classList.toggle('limit-reached', length >= sloganLimit);
+  }
+
+  sloganField.addEventListener('input', updateSloganCount);
+  updateSloganCount();
+</script>
+
+</body>
+</html>
