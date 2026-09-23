@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zéro Appel Manqué / Relance Devis — EIP</title>
-<meta name="description" content="Un appel manqué sur chantier ? Un devis resté sans réponse ? EIP reprend le contact et relance vos devis pour vous.">
+<title>Zéro Oubli — vos interventions dictées, classées, suivies | EIP</title>
+<meta name="description" content="Artisans : un message vocal WhatsApp après chaque intervention, et nous en faisons une fiche écrite, classée par client. Belgique et France.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -57,6 +57,12 @@
     font-size: 1.05rem;
     margin: 0 0 20px;
   }
+  ul {
+    margin: 0 0 28px;
+    padding-left: 22px;
+    font-size: 1.05rem;
+  }
+  li { margin-bottom: 8px; }
   section.contact {
     margin-top: 48px;
     background: var(--ink);
@@ -138,7 +144,8 @@
 
 <header>
   <a href="index.html">EIP — Economic Intelligence Partners</a>
-  <nav class="lang-switch" aria-label="Choix de la langue">
+  <!-- masqué 23/09/2026, décision Jean -->
+  <nav class="lang-switch" aria-label="Choix de la langue" hidden style="display:none">
     <button type="button" class="lang-btn active" data-lang="fr">FR</button>
     <button type="button" class="lang-btn" data-lang="nl">NL</button>
     <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -146,18 +153,21 @@
 </header>
 
 <main>
-  <h1 data-i18n="h1">Nous récupérons pour vous les opportunités inaperçues.</h1>
-  <p class="subtitle" data-i18n="subtitle">Zéro Appel Manqué / Relance Devis</p>
+  <h1 data-i18n="h1">Vous parlez, nous écrivons.</h1>
+  <!-- masqué 23/09/2026, décision Jean -->
+  <p class="subtitle" data-i18n="subtitle" hidden>Zéro Appel Manqué / Relance Devis</p>
 
-  <p data-i18n="p1">Sur un chantier, un appel qui sonne dans le vide, c'est souvent un client qui a déjà appelé quelqu'un d'autre. Un devis envoyé puis oublié, c'est une affaire qui part chez le concurrent sans même une relance.</p>
+  <p data-i18n="p1">Après chaque intervention, envoyez un simple message vocal WhatsApp. Nous en faisons une fiche écrite, relue avant d'être classée dans le dossier de votre client.</p>
 
-  <p data-i18n="p2">Un appel manqué ? Nous reprenons le contact par SMS. Un devis sans réponse ? Nous le relançons automatiquement.</p>
+  <ul>
+    <li data-i18n="benefit1">L'historique de chaque client, retrouvé en un instant.</li>
+    <li data-i18n="benefit2">Un récapitulatif de vos interventions, et un rappel des suivis à faire.</li>
+    <li data-i18n="benefit3">Téléphone perdu ou volé : votre accès est suspendu sur demande, vos dossiers restent intacts.</li>
+  </ul>
 
-  <p data-i18n="p3">49€ HT/mois — moins que ce que coûte un seul chantier perdu. Essai 30 jours, sans engagement, sans carte bancaire.</p>
+  <p data-i18n="p3">Relance de vos devis : en préparation avec nos artisans pilotes. Vous voulez participer ? Écrivez-nous.</p>
 
-  <p data-i18n="p4">Vous travaillez. Nous récupérons vos opportunités. Vous partez en vacances. Nous continuons à travailler pour vous.</p>
-
-  <p data-i18n="p5">Pensé au départ pour les plombiers — un appel manqué peut être une fuite d'eau qui n'attend pas — le service s'adresse aussi aux chauffagistes, électriciens, couvreurs, installateurs HVAC, photovoltaïque, et à tout métier du chantier où un rendez-vous manqué se transforme vite en client perdu.</p>
+  <p data-i18n="p4">49 € HT/mois — essai 30 jours sans engagement.</p>
 
   <section class="contact">
     <h2 data-i18n="contactH2">Démarrer mon essai de 30 jours</h2>
@@ -182,7 +192,7 @@
         <label for="entreprise" data-i18n="labelEntreprise">Nom de l'entreprise</label>
         <input type="text" id="entreprise" name="entreprise">
       </div>
-      <button type="submit" data-i18n="cta">Démarrer mon essai gratuit</button>
+      <button type="submit" data-i18n="cta">Devenir artisan pilote</button>
     </form>
   </section>
 
@@ -193,15 +203,16 @@
 (function () {
   var translations = {
     fr: {
-      title: "Zéro Appel Manqué / Relance Devis — EIP",
-      description: "Un appel manqué sur chantier ? Un devis resté sans réponse ? EIP reprend le contact et relance vos devis pour vous.",
-      h1: "Nous récupérons pour vous les opportunités inaperçues.",
+      title: "Zéro Oubli — vos interventions dictées, classées, suivies | EIP",
+      description: "Artisans : un message vocal WhatsApp après chaque intervention, et nous en faisons une fiche écrite, classée par client. Belgique et France.",
+      h1: "Vous parlez, nous écrivons.",
       subtitle: "Zéro Appel Manqué / Relance Devis",
-      p1: "Sur un chantier, un appel qui sonne dans le vide, c'est souvent un client qui a déjà appelé quelqu'un d'autre. Un devis envoyé puis oublié, c'est une affaire qui part chez le concurrent sans même une relance.",
-      p2: "Un appel manqué ? Nous reprenons le contact par SMS. Un devis sans réponse ? Nous le relançons automatiquement.",
-      p3: "49€ HT/mois — moins que ce que coûte un seul chantier perdu. Essai 30 jours, sans engagement, sans carte bancaire.",
-      p4: "Vous travaillez. Nous récupérons vos opportunités. Vous partez en vacances. Nous continuons à travailler pour vous.",
-      p5: "Pensé au départ pour les plombiers — un appel manqué peut être une fuite d'eau qui n'attend pas — le service s'adresse aussi aux chauffagistes, électriciens, couvreurs, installateurs HVAC, photovoltaïque, et à tout métier du chantier où un rendez-vous manqué se transforme vite en client perdu.",
+      p1: "Après chaque intervention, envoyez un simple message vocal WhatsApp. Nous en faisons une fiche écrite, relue avant d'être classée dans le dossier de votre client.",
+      benefit1: "L'historique de chaque client, retrouvé en un instant.",
+      benefit2: "Un récapitulatif de vos interventions, et un rappel des suivis à faire.",
+      benefit3: "Téléphone perdu ou volé : votre accès est suspendu sur demande, vos dossiers restent intacts.",
+      p3: "Relance de vos devis : en préparation avec nos artisans pilotes. Vous voulez participer ? Écrivez-nous.",
+      p4: "49 € HT/mois — essai 30 jours sans engagement.",
       contactH2: "Démarrer mon essai de 30 jours",
       labelNom: "Nom",
       labelEmail: "Email",
@@ -209,19 +220,20 @@
       labelMetier: "Métier",
       metierPlaceholder: "ex. plombier, chauffagiste, électricien...",
       labelEntreprise: "Nom de l'entreprise",
-      cta: "Démarrer mon essai gratuit",
+      cta: "Devenir artisan pilote",
       backLink: "← Retour à l'accueil"
     },
     nl: {
-      title: "Gemiste Oproep / Offerte-opvolging — EIP",
-      description: "Een gemiste oproep op de werf? Een offerte zonder antwoord? EIP herneemt het contact en volgt uw offertes voor u op.",
-      h1: "Wij halen de gemiste kansen voor u terug.",
+      title: "Zéro Oubli — uw interventies ingesproken, gerangschikt, opgevolgd | EIP",
+      description: "Vakmensen: een WhatsApp-spraakbericht na elke interventie, en wij maken er een geschreven fiche van, gerangschikt per klant. België en Frankrijk.",
+      h1: "U spreekt, wij schrijven.",
       subtitle: "Geen Gemiste Oproep meer / Offerte-opvolging",
-      p1: "Op een werf betekent een oproep die onbeantwoord blijft vaak dat de klant al iemand anders heeft gebeld. Een offerte die verstuurd en vergeten wordt, is een opdracht die zonder zelfs maar een opvolging naar de concurrent gaat.",
-      p2: "Oproep gemist? Wij herstellen het contact per sms. Offerte zonder antwoord? Wij volgen ze automatisch op.",
-      p3: "€49 excl. btw/maand — minder dan de kost van één verloren werf. 30 dagen proefperiode, zonder verbintenis, zonder bankkaart.",
-      p4: "U werkt. Wij halen uw kansen terug. U gaat op vakantie. Wij blijven voor u werken.",
-      p5: "Oorspronkelijk bedacht voor loodgieters — een gemiste oproep kan een lek zijn dat niet kan wachten — de dienst is ook geschikt voor verwarmingsinstallateurs, elektriciens, dakdekkers, HVAC-installateurs, fotovoltaïsche installateurs, en elk werfberoep waar een gemiste afspraak snel een verloren klant wordt.",
+      p1: "Stuur na elke interventie gewoon een spraakbericht via WhatsApp. Wij maken er een geschreven fiche van, nagelezen voordat ze in het dossier van uw klant wordt geklasseerd.",
+      benefit1: "De geschiedenis van elke klant, in een oogwenk teruggevonden.",
+      benefit2: "Een overzicht van uw interventies, en een herinnering aan de op te volgen taken.",
+      benefit3: "Telefoon verloren of gestolen: uw toegang wordt op aanvraag geschorst, uw dossiers blijven intact.",
+      p3: "Opvolging van uw offertes: in voorbereiding met onze pilootvakmensen. Wilt u deelnemen? Schrijf ons.",
+      p4: "€ 49 excl. btw/maand — 30 dagen proefperiode zonder verbintenis.",
       contactH2: "Start mijn proefperiode van 30 dagen",
       labelNom: "Naam",
       labelEmail: "E-mail",
@@ -229,19 +241,20 @@
       labelMetier: "Beroep",
       metierPlaceholder: "bv. loodgieter, verwarmingsinstallateur, elektricien...",
       labelEntreprise: "Bedrijfsnaam",
-      cta: "Start mijn gratis proefperiode",
+      cta: "Pilootvakman worden",
       backLink: "← Terug naar home"
     },
     en: {
-      title: "Missed Call / Quote Follow-up — EIP",
-      description: "A missed call on site? A quote left unanswered? EIP reconnects with your customers and follows up your quotes for you.",
-      h1: "We recover the opportunities you'd otherwise miss.",
+      title: "Zéro Oubli — your jobs dictated, filed, tracked | EIP",
+      description: "Tradespeople: a WhatsApp voice message after every job, and we turn it into a written record, filed by customer. Belgium and France.",
+      h1: "You talk, we write.",
       subtitle: "Zero Missed Call / Quote Follow-up",
-      p1: "On a job site, a call ringing out often means the customer has already called someone else. A quote sent and forgotten is a job that goes to a competitor without so much as a follow-up.",
-      p2: "Missed a call? We reconnect by SMS. Quote left unanswered? We follow it up automatically.",
-      p3: "€49 excl. VAT/month — less than the cost of a single lost job. 30-day trial, no commitment, no credit card.",
-      p4: "You work. We recover your opportunities. You go on holiday. We keep working for you.",
-      p5: "Built first for plumbers — a missed call can mean a leak that can't wait — the service also fits heating engineers, electricians, roofers, HVAC installers, solar installers, and any trade where a missed appointment quickly turns into a lost customer.",
+      p1: "After every job, just send a simple WhatsApp voice message. We turn it into a written record, checked before it's filed in your customer's folder.",
+      benefit1: "Every customer's history, found in an instant.",
+      benefit2: "A summary of your jobs, and a reminder of follow-ups to do.",
+      benefit3: "Phone lost or stolen: your access is suspended on request, your records stay intact.",
+      p3: "Follow-up on your quotes: in development with our pilot tradespeople. Want to take part? Write to us.",
+      p4: "€49 excl. VAT/month — 30-day trial, no commitment.",
       contactH2: "Start my 30-day trial",
       labelNom: "Name",
       labelEmail: "Email",
@@ -249,7 +262,7 @@
       labelMetier: "Trade",
       metierPlaceholder: "e.g. plumber, heating engineer, electrician...",
       labelEntreprise: "Company name",
-      cta: "Start my free trial",
+      cta: "Become a pilot tradesperson",
       backLink: "← Back to home"
     }
   };
