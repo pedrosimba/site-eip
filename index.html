@@ -366,6 +366,178 @@
     .reach{ padding-top:52px; }
     .contact{ padding:56px 0 72px; margin-top:48px; }
   }
+
+  /* ---------- zo- : animation d'accueil Zéro Oubli (boucle de 9 s, CSS pur) ---------- */
+
+  .zo-scene{
+    position:relative;
+    height:310px;
+    margin:4px 0 16px;
+    border:1px solid rgba(245,242,234,0.14);
+    border-radius:4px;
+    background:rgba(245,242,234,0.04);
+    overflow:hidden;
+    perspective:900px;
+    perspective-origin:50% 40%;
+  }
+  .zo-titre{
+    position:absolute;
+    top:14px; left:0; right:0;
+    text-align:center;
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.05rem;
+    color:var(--paper);
+    padding:0 12px;
+  }
+  .zo-titre-1{ animation:zo-titre-1 9s infinite; }
+  .zo-titre-2{ animation:zo-titre-2 9s infinite; }
+
+  .zo-papiers{
+    position:absolute;
+    inset:48px 0 0 0;
+    transform-style:preserve-3d;
+  }
+  .zo-papier{
+    position:absolute;
+    left:var(--x); top:var(--y);
+    width:44%;
+    max-width:160px;
+    padding:8px 10px;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:0.8rem;
+    line-height:1.25;
+    border-radius:1px;
+    box-shadow:0 6px 14px rgba(0,0,0,0.35);
+    opacity:0;
+    transform:rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
+    animation:zo-papier 9s infinite;
+    animation-delay:var(--d);
+    will-change:transform, opacity;
+  }
+  .zo-papier:nth-child(1){ --x:5%;  --y:4%;  --rx:18deg;  --ry:-14deg; --rz:-7deg; --d:0s; }
+  .zo-papier:nth-child(2){ --x:53%; --y:0%;  --rx:-12deg; --ry:16deg;  --rz:5deg;  --d:0.1s; }
+  .zo-papier:nth-child(3){ --x:10%; --y:34%; --rx:10deg;  --ry:20deg;  --rz:4deg;  --d:0.2s; }
+  .zo-papier:nth-child(4){ --x:55%; --y:31%; --rx:-16deg; --ry:-18deg; --rz:-6deg; --d:0.05s; }
+  .zo-papier:nth-child(5){ --x:3%;  --y:64%; --rx:14deg;  --ry:-10deg; --rz:6deg;  --d:0.15s; }
+  .zo-papier:nth-child(6){ --x:50%; --y:62%; --rx:-10deg; --ry:12deg;  --rz:-4deg; --d:0.25s; }
+
+  .zo-telephone{
+    position:absolute;
+    left:50%; top:46px;
+    width:210px;
+    height:250px;
+    margin-left:-105px;
+    padding:18px 10px 10px;
+    background:var(--paper);
+    border:3px solid rgba(245,242,234,0.55);
+    border-radius:24px;
+    box-shadow:0 14px 30px rgba(0,0,0,0.4);
+    opacity:0;
+    animation:zo-telephone 9s infinite;
+  }
+  .zo-telephone::before{
+    content:"";
+    position:absolute;
+    top:6px; left:50%;
+    width:44px; height:5px;
+    margin-left:-22px;
+    border-radius:3px;
+    background:rgba(15,27,51,0.25);
+  }
+  .zo-fiche{
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+    margin-bottom:8px;
+    padding:8px 9px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.72rem;
+    line-height:1.3;
+    opacity:0;
+  }
+  .zo-fiche-1{ animation:zo-fiche-1 9s infinite; }
+  .zo-fiche-2{ animation:zo-fiche-2 9s infinite; }
+  .zo-fiche-3{ animation:zo-fiche-3 9s infinite; }
+  .zo-fiche strong{ display:block; font-weight:500; }
+  .zo-fiche div span{ display:block; color:var(--text-secondary); }
+  .zo-coche{
+    flex:0 0 18px;
+    width:18px; height:18px;
+    border-radius:50%;
+    background:var(--accent);
+    color:var(--ink);
+    font-size:0.7rem;
+    font-weight:700;
+    line-height:18px;
+    text-align:center;
+  }
+
+  .zo-cta-calcul{
+    display:inline-block;
+    align-self:flex-start;
+    margin:0 0 20px;
+    padding:9px 16px;
+    border:1px solid var(--accent);
+    border-radius:2px;
+    color:var(--accent);
+    text-decoration:none;
+    font-size:0.9rem;
+    font-weight:500;
+  }
+  .zo-cta-calcul:hover{ background:rgba(201,151,74,0.12); }
+
+  /* 0-3 s papiers · 3-4,5 s envol + téléphone · 4,5-8,5 s fiches · 8,5-9 s remise à zéro */
+  @keyframes zo-titre-1{
+    0%{ opacity:0; } 4%{ opacity:1; } 30%{ opacity:1; } 36%{ opacity:0; } 100%{ opacity:0; }
+  }
+  @keyframes zo-titre-2{
+    0%, 50%{ opacity:0; } 55%{ opacity:1; } 94%{ opacity:1; } 100%{ opacity:0; }
+  }
+  @keyframes zo-papier{
+    0%{ opacity:0; transform:translateZ(-120px) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz)); }
+    6%{ opacity:1; transform:translateZ(0) translateY(0) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz)); }
+    19%{ opacity:1; transform:translateZ(20px) translateY(-6px) rotateX(calc(var(--rx) * -0.6)) rotateY(var(--ry)) rotateZ(var(--rz)); }
+    33%{ opacity:1; transform:translateZ(0) translateY(0) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz)); }
+    48%{ opacity:0; transform:translateZ(-900px) translateY(-140px) rotateX(70deg) rotateY(calc(var(--ry) * 4)) rotateZ(calc(var(--rz) * 8)); }
+    100%{ opacity:0; transform:translateZ(-900px) translateY(-140px) rotateX(70deg) rotateY(calc(var(--ry) * 4)) rotateZ(calc(var(--rz) * 8)); }
+  }
+  @keyframes zo-telephone{
+    0%, 36%{ opacity:0; transform:translateZ(-200px) rotateY(-100deg); }
+    50%{ opacity:1; transform:translateZ(0) rotateY(0deg); }
+    94%{ opacity:1; transform:translateZ(0) rotateY(0deg); }
+    100%{ opacity:0; transform:translateZ(0) rotateY(0deg); }
+  }
+  @keyframes zo-fiche-1{
+    0%, 52%{ opacity:0; transform:translateY(8px); } 56%, 94%{ opacity:1; transform:none; } 100%{ opacity:0; }
+  }
+  @keyframes zo-fiche-2{
+    0%, 64%{ opacity:0; transform:translateY(8px); } 68%, 94%{ opacity:1; transform:none; } 100%{ opacity:0; }
+  }
+  @keyframes zo-fiche-3{
+    0%, 76%{ opacity:0; transform:translateY(8px); } 80%, 94%{ opacity:1; transform:none; } 100%{ opacity:0; }
+  }
+
+  @media (max-width:480px){
+    .zo-papier{ font-size:0.74rem; padding:7px 8px; }
+  }
+
+  /* Moins de mouvement demandé : pas d'animation, le téléphone rangé s'affiche directement. */
+  @media (prefers-reduced-motion: reduce){
+    .zo-titre-1, .zo-papiers{ display:none; }
+    .zo-titre-2, .zo-telephone, .zo-fiche{
+      animation:none !important;
+      opacity:1;
+      transform:none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -399,6 +571,25 @@
         <p class="section-label">Branche Performance</p>
         <h2>Zéro Oubli</h2>
         <p><strong>Vos chantiers et prestations bien rangés.</strong></p>
+        <!-- zo- : animation d'accueil (CSS pur, boucle de 9 s) -->
+        <div class="zo-scene" role="img" aria-label="Des bouts de papier partout ? Vous dictez, on range : vos devis, entretiens et interventions deviennent des fiches classées dans votre téléphone.">
+          <div class="zo-titre zo-titre-1" aria-hidden="true">Des bouts de papier partout ?</div>
+          <div class="zo-titre zo-titre-2" aria-hidden="true">Vous dictez. On range.</div>
+          <div class="zo-papiers" aria-hidden="true">
+            <div class="zo-papier">Rappeler pour le devis ??</div>
+            <div class="zo-papier">Vidange dans 6 mois</div>
+            <div class="zo-papier">Chaudière : revoir quand ?</div>
+            <div class="zo-papier">Devis envoyé le… ?</div>
+            <div class="zo-papier">Repasser chez… ?</div>
+            <div class="zo-papier">Pièce à commander</div>
+          </div>
+          <div class="zo-telephone" aria-hidden="true">
+            <div class="zo-fiche zo-fiche-1"><span class="zo-coche">✓</span><div><strong>Devis · Tulipe3 · Mons</strong><span>Relance prévue le 30/09</span></div></div>
+            <div class="zo-fiche zo-fiche-2"><span class="zo-coche">✓</span><div><strong>Entretien · Clio-rouge2 · Quaregnon</strong><span>À revoir le 15/03</span></div></div>
+            <div class="zo-fiche zo-fiche-3"><span class="zo-coche">✓</span><div><strong>Intervention · Chêne7 · Frameries</strong><span>Fiche classée</span></div></div>
+          </div>
+        </div>
+        <a href="performance.html#calculateur" class="zo-cta-calcul">Combien me coûtent mes oublis ?</a>
         <!-- L2 masquée : à afficher après test réel du parcours devis -->
         <p hidden><strong>Vos devis et estimations jamais oubliés.</strong></p>
         <p><strong>Vous dictez · On range · On vous prévient à temps</strong></p>

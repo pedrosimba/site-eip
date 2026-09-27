@@ -138,6 +138,88 @@
     color: var(--paper);
     border-color: var(--ink);
   }
+
+  /* ---------- zo- : calculateur « Combien vous coûtent vos oublis ? » ---------- */
+  .zo-calc {
+    --line: #D9D2BE;
+    margin: 40px 0 0;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    scroll-margin-top: 16px;
+  }
+  .zo-calc h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0 0 8px;
+  }
+  .zo-calc-intro { font-size: 0.95rem; color: var(--muted); }
+  .zo-calc label {
+    color: var(--ink);
+    opacity: 1;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .zo-calc input[type="text"] {
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .zo-calc-groupe {
+    margin: 24px 0 0;
+    padding: 0;
+    border: none;
+  }
+  .zo-calc-groupe legend {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    padding: 0;
+    margin: 0 0 8px;
+  }
+  .zo-calc-ligne { margin: 0 0 16px; }
+  .zo-calc-ligne label {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .zo-calc-valeur {
+    flex: 0 0 auto;
+    font-weight: 600;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .zo-calc input[type="range"] {
+    width: 100%;
+    padding: 0;
+    margin: 6px 0 0;
+    accent-color: var(--accent);
+    background: transparent;
+  }
+  .zo-calc-resultat {
+    margin: 24px 0 0;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .zo-calc-resultat p { font-size: 1rem; margin: 0 0 10px; }
+  .zo-calc-resultat p:last-child { margin: 0; }
+  .zo-calc-resultat strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .zo-calc-essai { margin: 20px 0 0; }
+  .zo-calc-essai button { margin-top: 0; }
+  .zo-calc-rassurance { font-size: 0.85rem; color: var(--muted); margin: 8px 0 0; }
+  .zo-calc-mention { font-size: 0.8rem; color: var(--muted); margin: 16px 0 0; }
+  @media (max-width: 480px) {
+    .zo-calc { padding: 20px 16px; }
+    .zo-calc-essai button { width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -172,8 +254,63 @@
 
   <p data-i18n="p4">49 € HT/mois — essai 30 jours sans engagement.</p>
 
+  <!-- zo- : calculateur (aucun appel réseau, rien n'est mémorisé) -->
+  <section class="zo-calc" id="calculateur" aria-labelledby="zo-calc-titre">
+    <h2 id="zo-calc-titre">Combien vous coûtent vos oublis ?</h2>
+    <p class="zo-calc-intro">Les curseurs sont réglés sur des valeurs d'exemple. Mettez vos propres chiffres : le calcul se fait sur votre téléphone.</p>
+
+    <div class="zo-calc-ligne">
+      <label for="zo-metier">Votre métier</label>
+      <input type="text" id="zo-metier" autocomplete="off" placeholder="mécanicien, plombier, jardinier, serrurier…">
+    </div>
+
+    <fieldset class="zo-calc-groupe">
+      <legend>Devis et estimations</legend>
+      <div class="zo-calc-ligne">
+        <label for="zo-devis">Devis ou estimations envoyés par mois <span class="zo-calc-valeur" id="zo-devis-v"></span></label>
+        <input type="range" id="zo-devis" min="0" max="60" step="1" value="10">
+      </div>
+      <div class="zo-calc-ligne">
+        <label for="zo-devis-montant">Montant moyen d'un devis <span class="zo-calc-valeur" id="zo-devis-montant-v"></span></label>
+        <input type="range" id="zo-devis-montant" min="50" max="5000" step="50" value="600">
+      </div>
+      <div class="zo-calc-ligne">
+        <label for="zo-devis-part">Part jamais relancée <span class="zo-calc-valeur" id="zo-devis-part-v"></span></label>
+        <input type="range" id="zo-devis-part" min="0" max="60" step="1" value="20">
+      </div>
+    </fieldset>
+
+    <fieldset class="zo-calc-groupe">
+      <legend>Clients à revoir (entretien, suivi, prochaine visite)</legend>
+      <div class="zo-calc-ligne">
+        <label for="zo-clients">Clients à revoir par mois <span class="zo-calc-valeur" id="zo-clients-v"></span></label>
+        <input type="range" id="zo-clients" min="0" max="80" step="1" value="15">
+      </div>
+      <div class="zo-calc-ligne">
+        <label for="zo-clients-montant">Montant moyen <span class="zo-calc-valeur" id="zo-clients-montant-v"></span></label>
+        <input type="range" id="zo-clients-montant" min="20" max="2000" step="10" value="150">
+      </div>
+      <div class="zo-calc-ligne">
+        <label for="zo-clients-part">Part qui ne revient pas <span class="zo-calc-valeur" id="zo-clients-part-v"></span></label>
+        <input type="range" id="zo-clients-part" min="0" max="60" step="1" value="20">
+      </div>
+    </fieldset>
+
+    <div class="zo-calc-resultat" aria-live="polite">
+      <p><span id="zo-r-debut">Selon vos chiffres</span>, vous laissez peut-être filer <strong id="zo-r-mois"></strong> par mois, soit <strong id="zo-r-an"></strong> par an.</p>
+      <p>Zéro Oubli coûte 49 € HT par mois. Un seul devis récupéré de <span id="zo-r-devis"></span> le rembourse.</p>
+    </div>
+
+    <div class="zo-calc-essai">
+      <button type="button" id="zo-calc-essai">Démarrer mon essai gratuit de 30 jours</button>
+      <p class="zo-calc-rassurance">Sans carte bancaire · Sans engagement</p>
+    </div>
+
+    <p class="zo-calc-mention">Ordre de grandeur calculé uniquement à partir des chiffres que vous avez entrés. Ce n'est pas une promesse de gain.</p>
+  </section>
+
   <section class="contact">
-    <h2 data-i18n="contactH2">Démarrer mon essai de 30 jours</h2>
+    <h2 data-i18n="contactH2">Démarrer mon essai gratuit de 30 jours</h2>
     <form action="https://formspree.io/f/mdeorwob" method="POST">
       <div>
         <label for="nom" data-i18n="labelNom">Nom</label>
@@ -309,6 +446,70 @@
   if (saved && translations[saved]) {
     applyLanguage(saved);
   }
+})();
+</script>
+
+<script>
+/* zo- : calculateur. Tout se passe dans la page : aucun appel réseau, rien n'est mémorisé. */
+(function () {
+  var section = document.getElementById('calculateur');
+  if (!section) return;
+
+  function el(id) { return document.getElementById(id); }
+
+  // Format belge : 1 200 € (espace insécable entre les milliers et avant €).
+  function euros(n) {
+    var s = String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return s + ' €';
+  }
+
+  function debut(metier) {
+    if (!metier) return 'Selon vos chiffres';
+    var de = /^[aeiouyhàâäéèêëîïôöùûü]/i.test(metier) ? "d'" : 'de ';
+    return 'Pour votre activité ' + de + metier + ', selon vos chiffres';
+  }
+
+  var curseurs = [
+    ['zo-devis', ''], ['zo-devis-montant', '€'], ['zo-devis-part', '%'],
+    ['zo-clients', ''], ['zo-clients-montant', '€'], ['zo-clients-part', '%']
+  ];
+
+  function val(id) { return Number(el(id).value) || 0; }
+
+  function calculer() {
+    curseurs.forEach(function (c) {
+      var v = val(c[0]);
+      el(c[0] + '-v').textContent = c[1] === '€' ? euros(v) : (c[1] === '%' ? v + ' %' : String(v));
+    });
+
+    var parMois = val('zo-devis') * val('zo-devis-montant') * val('zo-devis-part') / 100
+                + val('zo-clients') * val('zo-clients-montant') * val('zo-clients-part') / 100;
+
+    el('zo-r-debut').textContent = debut(el('zo-metier').value.trim());
+    el('zo-r-mois').textContent = euros(parMois);
+    el('zo-r-an').textContent = euros(parMois * 12);
+    el('zo-r-devis').textContent = euros(val('zo-devis-montant'));
+  }
+
+  section.addEventListener('input', calculer);
+
+  // Pré-remplissage : le métier tapé dans le calculateur est recopié dans le champ « Métier »
+  // du formulaire, sauf si le visiteur a déjà écrit lui-même dans ce champ. Rien n'est envoyé.
+  var metierFormulaire = document.getElementById('metier');
+  var saisiParVisiteur = false;
+  if (metierFormulaire) {
+    metierFormulaire.addEventListener('input', function () { saisiParVisiteur = true; });
+    el('zo-metier').addEventListener('input', function () {
+      if (!saisiParVisiteur) metierFormulaire.value = el('zo-metier').value.trim();
+    });
+  }
+
+  el('zo-calc-essai').addEventListener('click', function () {
+    var formulaire = document.querySelector('section.contact');
+    if (formulaire) formulaire.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  calculer();
 })();
 </script>
 
