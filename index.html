@@ -20,10 +20,10 @@ a:focus-visible{outline:3px solid var(--or);outline-offset:3px}
 header.boite{padding-top:20px;padding-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
 .marque{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
 .marque span{display:flex;flex-direction:column;line-height:1.15}
-.marque b{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:22px}
-.marque small{font-size:12px;color:var(--gris)}
+.marque b{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:1.375rem}
+.marque small{font-size:.75rem;color:var(--gris)}
 nav{display:flex;flex-wrap:wrap;gap:8px}
-nav a{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;text-decoration:none;font-weight:500;font-size:15px}
+nav a{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;text-decoration:none;font-weight:500;font-size:.9375rem}
 nav a.ecrire{padding:0 18px;font-weight:600;background:var(--nuit);color:var(--fond);border-radius:999px}
 .bouton{min-height:48px;display:inline-flex;align-items:center;padding:0 24px;font-weight:600;text-decoration:none;border-radius:999px}
 .bouton.or,.bouton.or:hover{background:var(--or);color:var(--nuit)}
@@ -33,23 +33,30 @@ nav a.ecrire{padding:0 18px;font-weight:600;background:var(--nuit);color:var(--f
 #accueil{padding-top:56px;padding-bottom:72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center}
 .pile{display:flex;flex-direction:column;gap:20px}
 .pile-serree{gap:14px}
-.surtitre{margin:0;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--or-fonce)}
-h1{margin:0;font-size:clamp(36px,5vw,58px);line-height:1.08}
-.chapo{margin:0;font-size:19px;line-height:1.6;color:var(--texte2);max-width:34em}
+.surtitre{margin:0;font-size:.8125rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--or-fonce)}
+h1{margin:0;font-size:clamp(2.25rem,5vw,3.625rem);line-height:1.08}
+.chapo{margin:0;font-size:1.1875rem;line-height:1.6;color:var(--texte2);max-width:34em}
 .boutons{display:flex;flex-wrap:wrap;gap:12px;padding-top:8px}
-.telephones{position:relative;width:100%;max-width:480px;aspect-ratio:480/380;margin:0 auto;overflow:hidden}
-.tel{position:absolute;width:31%;aspect-ratio:1/2;border-radius:28px;padding:14px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
-.tel i{display:block;flex-shrink:0;border-radius:10px}
-.tel i:first-child{height:18px;border-radius:6px}
-.t1{left:4%;top:10%;background:#1F3A5F;transform:rotate(-8deg)}
-.t2{left:34.5%;top:2%;width:33%;background:#FFFFFF;border:2px solid var(--nuit);z-index:2}
-.t3{left:65%;top:12%;background:var(--nuit);transform:rotate(7deg)}
+.telephones{position:relative;width:100%;max-width:480px;aspect-ratio:480/400;margin:0 auto;perspective:900px;overflow:hidden}
+.tel{position:absolute;width:31%;aspect-ratio:1/2;transform-style:preserve-3d;animation:flotte 6s ease-in-out infinite}
+.face{position:absolute;inset:0;border-radius:28px;padding:14px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.face i{display:block;flex-shrink:0;border-radius:10px}
+.face i:first-child{height:18px;border-radius:6px}
+.tranche{position:absolute;inset:0;border-radius:28px;background:#0F1A30;transform:translateZ(-10px)}
+.ombre{position:absolute;bottom:2%;width:31%;height:5%;border-radius:50%;background:var(--trait);animation:ombre 6s ease-in-out infinite}
+.t1{left:3%;top:10%;--r:-14deg;animation-delay:0s}
+.t2{left:34.5%;top:3%;width:33%;--r:0deg;z-index:2;animation-delay:-2s}
+.t3{left:66%;top:12%;--r:14deg;animation-delay:-4s}
+.o1{left:3%;animation-delay:0s}.o2{left:35%;animation-delay:-2s}.o3{left:66%;animation-delay:-4s}
+@keyframes flotte{0%,100%{transform:rotateY(var(--r)) rotateX(8deg) translateY(0)}50%{transform:rotateY(calc(var(--r) + 10deg)) rotateX(4deg) translateY(-10px)}}
+@keyframes ombre{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.8)}}
+@media (prefers-reduced-motion:reduce){.tel,.ombre{animation:none}}
 #solutions{background:#FFFFFF;border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
 #solutions .boite,#methode,#contact{padding-top:72px;padding-bottom:72px;display:flex;flex-direction:column;gap:32px}
 #contact{gap:24px}
-h2{margin:0;font-size:38px;line-height:1.15}
+h2{margin:0;font-size:2.375rem;line-height:1.15}
 .intro{display:flex;flex-direction:column;gap:10px}
-.intro p{margin:0;font-size:17px;color:var(--texte2);max-width:40em}
+.intro p{margin:0;font-size:1.0625rem;color:var(--texte2);max-width:40em}
 .cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
 .carte{border:1px solid var(--trait);border-radius:20px;background:var(--fond);overflow:hidden;display:flex;flex-direction:column}
 .vignette{height:168px;display:flex;align-items:flex-end;justify-content:center;padding-top:24px}
@@ -58,26 +65,26 @@ h2{margin:0;font-size:38px;line-height:1.15}
 .corps{padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex-grow:1}
 .ligne{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
 h3{margin:0}
-.carte h3{font-size:24px}
-.badge{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px}
+.carte h3{font-size:1.5rem}
+.badge{font-size:.75rem;font-weight:600;padding:5px 10px;border-radius:999px}
 .en-ligne{background:#E3F1E6;color:#1E5A2E}.bientot{background:#F7EDD2;color:#6B5210}.prepa{background:#ECEEF3;color:var(--texte2)}
-.marche{margin:0;font-size:13px;font-weight:600;color:var(--or-fonce);text-transform:uppercase;letter-spacing:.08em}
-.texte{margin:0;font-size:16px;line-height:1.55;color:var(--texte2);flex-grow:1}
+.marche{margin:0;font-size:.8125rem;font-weight:600;color:var(--or-fonce);text-transform:uppercase;letter-spacing:.08em}
+.texte{margin:0;font-size:1rem;line-height:1.55;color:var(--texte2);flex-grow:1}
 .etapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px}
 .etape{background:#FFFFFF;border:1px solid var(--trait);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px}
-.etape .num{font-family:"Fraunces",Georgia,serif;font-size:32px;font-weight:700;color:var(--or-fonce)}
-.etape h3{font-size:19px;font-weight:600}
-.etape p{margin:0;font-size:16px;line-height:1.55;color:var(--texte2)}
+.etape .num{font-family:"Fraunces",Georgia,serif;font-size:2rem;font-weight:700;color:var(--or-fonce)}
+.etape h3{font-size:1.1875rem;font-weight:600}
+.etape p{margin:0;font-size:1rem;line-height:1.55;color:var(--texte2)}
 #annonceurs{background:var(--nuit);color:var(--fond)}
 #annonceurs .boite{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px;align-items:center}
-#annonceurs h2{font-size:36px}
-#annonceurs p{margin:0;font-size:17px;line-height:1.6;color:#D9DEE8}
+#annonceurs h2{font-size:2.25rem}
+#annonceurs p{margin:0;font-size:1.0625rem;line-height:1.6;color:#D9DEE8}
 .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
 .contacts a{background:#FFFFFF;border:1px solid var(--trait);border-radius:18px;padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:6px}
-.contacts b{font-weight:600;font-size:17px}
-.contacts span{font-size:16px;color:var(--texte2)}
+.contacts b{font-weight:600;font-size:1.0625rem}
+.contacts span{font-size:1rem;color:var(--texte2)}
 footer{border-top:1px solid var(--trait)}
-footer .boite{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:14px;color:var(--gris)}
+footer .boite{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:.875rem;color:var(--gris)}
 footer a{color:var(--gris);min-height:44px;display:inline-flex;align-items:center}
 </style>
 </head>
@@ -95,9 +102,10 @@ footer a{color:var(--gris);min-height:44px;display:inline-flex;align-items:cente
 <div class="boutons"><a class="bouton or" href="#solutions">Essayer nos démos</a><a class="bouton contour" href="#contact">Devenir partenaire</a></div>
 </div>
 <div class="telephones" aria-hidden="true">
-<div class="tel t1"><i style="background:#E0A526"></i><i style="height:60px;background:#FBEFD3"></i><i style="height:40px;background:#F5E4E1"></i></div>
-<div class="tel t2"><i style="background:#2F6B3F"></i><i style="height:70px;background:#F6EBD6"></i><i style="height:40px;background:#F08A24"></i></div>
-<div class="tel t3"><i style="background:#C9A227"></i><i style="height:60px;background:#FAF8F3"></i><i style="height:40px;background:#4A7BD0"></i></div>
+<div class="ombre o1"></div><div class="ombre o2"></div><div class="ombre o3"></div>
+<div class="tel t1"><div class="tranche"></div><div class="face" style="background:#1F3A5F"><i style="background:#E0A526"></i><i style="height:60px;background:#FBEFD3"></i><i style="height:40px;background:#F5E4E1"></i></div></div>
+<div class="tel t2"><div class="tranche"></div><div class="face" style="background:#FFFFFF;border:2px solid #1B2A4A"><i style="background:#2F6B3F"></i><i style="height:70px;background:#F6EBD6"></i><i style="height:40px;background:#F08A24"></i></div></div>
+<div class="tel t3"><div class="tranche"></div><div class="face" style="background:#1B2A4A"><i style="background:#C9A227"></i><i style="height:60px;background:#FAF8F3"></i><i style="height:40px;background:#4A7BD0"></i></div></div>
 </div>
 </section>
 <section id="solutions">
