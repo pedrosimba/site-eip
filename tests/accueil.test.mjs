@@ -59,7 +59,8 @@ test('A3 — textes exacts présents', () => {
     'Éducation · Belgique et France',
     'Le carnet de crédit numérique des boutiques de quartier. Le crédit, plus simple pour tous.',
     'Afrivita, ton coach : bouge, mange léger, retrouve ta forme.',
-    'Afrivita pour toi en Europe, ou à offrir à un parent. 29,90 € pour un an.',
+    // 30/10/2026 : texte de la carte Afrivita Diaspora remplacé par le texte exact décidé par Pierre.
+    'Tu vis en Europe ? Offre Afrivita à un membre de ta famille au Cameroun, ou prends-le pour toi. 29,90 € pour un an. Les autres pays d\'Afrique suivront.',
     'Bouger sans salle de sport, bien manger sans se priver. 29,90 € pour un an.',
     'Il ne passe pas l\'examen à la place de votre enfant. Il lui donne l\'entraînement.',
     'Vous essayez d\'abord',
@@ -86,17 +87,43 @@ test('A3 — textes exacts présents', () => {
 
 test('A4 — badges des démos', () => {
   const texte = normaliser(html());
-  assert.equal(compter(texte, 'Démo en ligne'), 2, 'Démo en ligne');
-  assert.equal(compter(texte, 'Démo bientôt'), 2, 'Démo bientôt');
+  // 30/10/2026 : Afrivita Diaspora passe de « Démo bientôt » à « Démo en ligne » (décision de Pierre) → 3 et 1.
+  assert.equal(compter(texte, 'Démo en ligne'), 3, 'Démo en ligne');
+  assert.equal(compter(texte, 'Démo bientôt'), 1, 'Démo bientôt');
   assert.equal(compter(texte, 'En préparation'), 1, 'En préparation');
 });
 
-test('A5 — 2 liens « Essayer la démo » et 3 liens « Être prévenu »', () => {
+// 30/10/2026 : titre passé de « 2 … et 3 … » à « 3 … et 2 … » : la carte Afrivita Diaspora a désormais une démo.
+test('A5 — 3 liens « Essayer la démo » et 2 liens « Être prévenu »', () => {
   const tous = liens(html());
   const essayer = tous.filter((l) => l.texte === 'Essayer la démo').map((l) => l.href);
-  assert.deepEqual(essayer, ['https://eipdecision.be/ccapp/', 'https://eipdecision.be/afrivita/']);
+  // 30/10/2026 : Afrivita (Cameroun) → /afrivita/cameroun/ ; Afrivita Diaspora → /afrivita/ (décisions de Pierre).
+  assert.deepEqual(essayer, ['https://eipdecision.be/ccapp/', 'https://eipdecision.be/afrivita/cameroun/', 'https://eipdecision.be/afrivita/']);
   const prevenu = tous.filter((l) => l.texte === 'Être prévenu').map((l) => l.href);
-  assert.deepEqual(prevenu, ['#contact', '#contact', '#contact']);
+  // 30/10/2026 : un « Être prévenu » de moins (celui d'Afrivita Diaspora).
+  assert.deepEqual(prevenu, ['#contact', '#contact']);
+});
+
+// 30/10/2026 : nouveau test — chaque carte Afrivita, carte par carte (titre, marché, badge, bouton, lien).
+// Afrivita Diaspora a la même présentation que la carte CCAPP (badge « en-ligne », bouton « plein petit »).
+test('A9 — cartes Afrivita et Afrivita Diaspora', () => {
+  const cartes = [...html().matchAll(/<article class="carte">([\s\S]*?)<\/article>/g)].map((m) => m[1]);
+  const carte = (titre) => {
+    const trouvees = cartes.filter((c) => c.includes(`<h3 class="titre">${titre}</h3>`));
+    assert.equal(trouvees.length, 1, `carte « ${titre} » introuvable ou en double`);
+    return trouvees[0];
+  };
+  const cameroun = carte('Afrivita');
+  assert.ok(cameroun.includes('<p class="marche">Bien-être · Cameroun</p>'), 'Afrivita : marché');
+  assert.ok(cameroun.includes('href="https://eipdecision.be/afrivita/cameroun/"'), 'Afrivita : lien');
+
+  const diaspora = carte('Afrivita Diaspora');
+  assert.ok(diaspora.includes('<p class="marche">Bien-être · Europe</p>'), 'Diaspora : marché');
+  assert.ok(diaspora.includes('<span class="badge en-ligne">Démo en ligne</span>'), 'Diaspora : badge');
+  assert.ok(diaspora.includes('<a class="bouton plein petit" href="https://eipdecision.be/afrivita/">Essayer la démo</a>'), 'Diaspora : bouton');
+  assert.equal(normaliser(diaspora.match(/<p class="texte">([\s\S]*?)<\/p>/)[1]),
+    'Tu vis en Europe ? Offre Afrivita à un membre de ta famille au Cameroun, ou prends-le pour toi. 29,90 € pour un an. Les autres pays d\'Afrique suivront.',
+    'Diaspora : texte exact');
 });
 
 test('A6 — liens de contact et mentions légales présents', () => {
