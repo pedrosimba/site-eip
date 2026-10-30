@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Afrivita">
+  <circle cx="50" cy="20" r="8" fill="#1C1917"/>
+  <path d="M50 31 L50 60" stroke="#166534" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M50 38 L30 12 M50 38 L70 12" stroke="#F97316" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M50 60 L36 90 M50 60 L66 88" stroke="#1C1917" stroke-width="8" stroke-linecap="round" fill="none"/>
+</svg>
