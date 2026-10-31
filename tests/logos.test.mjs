@@ -21,7 +21,8 @@ const vignette = (titre) => {
 };
 
 const LOGOS = [
-  ['CCAPP', 'logos/ccapp.png'],
+  // 31/10/2026 : logo Double C, logos/ccapp.png → logos/ccapp.svg (décision de Pierre, accord du pilote)
+  ['CCAPP', 'logos/ccapp.svg'],
   ['Afrivita', 'logos/afrivita.svg'],
   ['Afrivita Diaspora', 'logos/afrivita.svg'],
   ['Gustavita Coach', 'logos/gustavita.svg'],
@@ -48,7 +49,8 @@ test('L2 — la carte de l\'appli de révision n\'a aucun logo', () => {
 
 test('L3 — les logos Afrivita et CCAPP sont les fichiers validés (sha256)', () => {
   assert.equal(sha256('logos/afrivita.svg'), '6dd5fea32beb8bea4c42576427e7fe0fc0ffadf07ab56bd9aa933485e10e9222');
-  assert.equal(sha256('logos/ccapp.png'), '8a0fd46ef3ef3d7fa393512a0e7f71bed1316c35db6c9fe5bf1b835cf2dacafa');
+  // 31/10/2026 : empreinte du logo Double C (copie de ccapp/icones/logo-double-c.svg) au lieu de ccapp.png (décision de Pierre, accord du pilote)
+  assert.equal(sha256('logos/ccapp.svg'), '0cb8b82bada4be3cac406b30c54e73897fbb904f693c2797e7cf15942daba356');
 });
 
 test('L4 — le logo Gustavita reprend le cercle et le tracé de gustavita/src/rendu.mjs:20-21', () => {
@@ -58,7 +60,8 @@ test('L4 — le logo Gustavita reprend le cercle et le tracé de gustavita/src/r
 });
 
 test('L5 — aucune URL externe dans les 3 logos (seul xmlns SVG toléré)', () => {
-  for (const f of ['logos/afrivita.svg', 'logos/ccapp.png', 'logos/gustavita.svg']) {
+  // 31/10/2026 : le logo CCAPP contrôlé est désormais logos/ccapp.svg (décision de Pierre, accord du pilote)
+  for (const f of ['logos/afrivita.svg', 'logos/ccapp.svg', 'logos/gustavita.svg']) {
     const contenu = lire(f, 'latin1').split('xmlns="http://www.w3.org/2000/svg"').join('');
     assert.ok(!/https?:\/\//i.test(contenu), `${f} contient une adresse http`);
   }

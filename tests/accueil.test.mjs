@@ -72,8 +72,7 @@ test('A3 — textes exacts présents', () => {
     'Annonceurs : soyez le partenaire du mois',
     'Votre logo, votre slogan et votre contact, en haut de l\'accueil de nos applis. Nous sélectionnons des annonceurs cohérents avec chaque appli.',
     'Réserver un espace',
-    'WhatsApp Belgique',
-    '+32 470 28 49 53',
+    // 31/10/2026 : « WhatsApp Belgique » et le numéro personnel retirés de l'accueil (décision de Pierre, accord du pilote)
     'WhatsApp France',
     '+33 6 98 81 43 63',
     'pierre@eipdecision.be',
@@ -88,20 +87,24 @@ test('A3 — textes exacts présents', () => {
 test('A4 — badges des démos', () => {
   const texte = normaliser(html());
   // 30/10/2026 : Afrivita Diaspora passe de « Démo bientôt » à « Démo en ligne » (décision de Pierre) → 3 et 1.
-  assert.equal(compter(texte, 'Démo en ligne'), 3, 'Démo en ligne');
-  assert.equal(compter(texte, 'Démo bientôt'), 1, 'Démo bientôt');
+  // 31/10/2026 : Gustavita Coach passe de « Démo bientôt » à « Démo en ligne » → 4 et 0 (décision de Pierre, accord du pilote)
+  assert.equal(compter(texte, 'Démo en ligne'), 4, 'Démo en ligne');
+  assert.equal(compter(texte, 'Démo bientôt'), 0, 'Démo bientôt');
   assert.equal(compter(texte, 'En préparation'), 1, 'En préparation');
 });
 
 // 30/10/2026 : titre passé de « 2 … et 3 … » à « 3 … et 2 … » : la carte Afrivita Diaspora a désormais une démo.
-test('A5 — 3 liens « Essayer la démo » et 2 liens « Être prévenu »', () => {
+// 31/10/2026 : titre passé à « 4 … et 1 … » : la carte Gustavita Coach a désormais une démo (décision de Pierre, accord du pilote)
+test('A5 — 4 liens « Essayer la démo » et 1 lien « Être prévenu »', () => {
   const tous = liens(html());
   const essayer = tous.filter((l) => l.texte === 'Essayer la démo').map((l) => l.href);
   // 30/10/2026 : Afrivita (Cameroun) → /afrivita/cameroun/ ; Afrivita Diaspora → /afrivita/ (décisions de Pierre).
-  assert.deepEqual(essayer, ['https://eipdecision.be/ccapp/', 'https://eipdecision.be/afrivita/cameroun/', 'https://eipdecision.be/afrivita/']);
+  // 31/10/2026 : 4e lien, Gustavita Coach → /gustavita/ (décision de Pierre, accord du pilote)
+  assert.deepEqual(essayer, ['https://eipdecision.be/ccapp/', 'https://eipdecision.be/afrivita/cameroun/', 'https://eipdecision.be/afrivita/', 'https://eipdecision.be/gustavita/']);
   const prevenu = tous.filter((l) => l.texte === 'Être prévenu').map((l) => l.href);
   // 30/10/2026 : un « Être prévenu » de moins (celui d'Afrivita Diaspora).
-  assert.deepEqual(prevenu, ['#contact', '#contact']);
+  // 31/10/2026 : encore un de moins (celui de Gustavita Coach) ; reste celui de l'appli de révision (décision de Pierre, accord du pilote)
+  assert.deepEqual(prevenu, ['#contact']);
 });
 
 // 30/10/2026 : nouveau test — chaque carte Afrivita, carte par carte (titre, marché, badge, bouton, lien).
@@ -128,7 +131,8 @@ test('A9 — cartes Afrivita et Afrivita Diaspora', () => {
 
 test('A6 — liens de contact et mentions légales présents', () => {
   const hrefs = liens(html()).map((l) => l.href);
-  for (const h of ['https://wa.me/32470284953', 'https://wa.me/33698814363', 'mailto:pierre@eipdecision.be', 'mentions-legales.html']) {
+  // 31/10/2026 : lien WhatsApp Belgique (numéro personnel) retiré ; le lien France reste (décision de Pierre, accord du pilote)
+  for (const h of ['https://wa.me/33698814363', 'mailto:pierre@eipdecision.be', 'mentions-legales.html']) {
     assert.ok(hrefs.includes(h), `lien absent : ${h}`);
   }
 });
