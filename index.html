@@ -77,10 +77,10 @@ h3{margin:0}
 .etape .num{font-family:"Fraunces",Georgia,serif;font-size:2rem;font-weight:700;color:var(--or-fonce)}
 .etape h3{font-size:1.1875rem;font-weight:600}
 .etape p{margin:0;font-size:1rem;line-height:1.55;color:var(--texte2)}
-#annonceurs{background:var(--nuit);color:var(--fond)}
-#annonceurs .boite{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px;align-items:center}
-#annonceurs h2{font-size:2.25rem}
-#annonceurs p{margin:0;font-size:1.0625rem;line-height:1.6;color:#D9DEE8}
+#annonceurs,#partenaires{background:var(--nuit);color:var(--fond)}
+#annonceurs .boite,#partenaires .boite{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px;align-items:center}
+#annonceurs h2,#partenaires h2{font-size:2.25rem}
+#annonceurs p,#partenaires p{margin:0;font-size:1.0625rem;line-height:1.6;color:#D9DEE8}
 .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
 .contacts a{background:#FFFFFF;border:1px solid var(--trait);border-radius:18px;padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:6px}
 .contacts b{font-weight:600;font-size:1.0625rem}
@@ -101,7 +101,7 @@ footer a{color:var(--gris);min-height:44px;display:inline-flex;align-items:cente
 <p class="surtitre">Éditeur de solutions numériques</p>
 <h1 class="titre">Des applis simples, pour la vie de tous les jours.</h1>
 <p class="chapo">EIP conçoit et édite ses propres applications, en Europe et en Afrique. Chacune s'essaie gratuitement avant d'acheter.</p>
-<div class="boutons"><a class="bouton or" href="#solutions">Essayer nos démos</a><a class="bouton contour" href="#contact">Devenir partenaire</a></div>
+<div class="boutons"><a class="bouton or" href="#solutions">Essayer nos démos</a><a class="bouton contour" href="#partenaires">Devenir partenaire</a></div>
 </div>
 <div class="telephones" aria-hidden="true">
 <div class="ombre o1"></div><div class="ombre o2"></div><div class="ombre o3"></div>
@@ -122,6 +122,7 @@ footer a{color:var(--gris);min-height:44px;display:inline-flex;align-items:cente
 </div>
 </div>
 </section>
+<section id="partenaires"><div class="boite"><div class="pile pile-serree"><h2 class="titre">Devenez partenaire EIP</h2><p>En signant le contrat partenaire, vous détenez une licence d'exploitation de l'application de votre choix et la proposez autour de vous.</p></div><div class="boutons"><a class="bouton or" href="https://wa.me/32483142070?text=Bonjour%20EIP%2C%20je%20souhaite%20devenir%20partenaire.">Parlons-en sur WhatsApp</a></div></div></section>
 <section id="methode" class="boite">
 <h2 class="titre">Notre méthode</h2>
 <div class="etapes">

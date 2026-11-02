@@ -25,7 +25,7 @@ const liens = (source) => [...source.matchAll(/<a\b[^>]*\bhref="([^"]*)"[^>]*>([
 
 test('A1 — les 5 sections existent, dans l\'ordre', () => {
   const ids = [...html().matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map((m) => m[1]);
-  assert.deepEqual(ids, ['accueil', 'solutions', 'methode', 'annonceurs', 'contact']);
+  assert.deepEqual(ids, ['accueil', 'solutions', 'partenaires', 'methode', 'annonceurs', 'contact']); // 02/11/2026 : bandeau partenaires (décision de Pierre, accord du pilote)
 });
 
 test('A2 — le menu contient les 4 liens attendus', () => {

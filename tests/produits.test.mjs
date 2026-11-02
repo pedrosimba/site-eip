@@ -74,6 +74,6 @@ test('P7 — numéro unique +32…70 avec message déjà rempli ; numéros 53 et
     }
   }
   const wa = html().match(/href="(https:\/\/wa\.me\/[^"]*)"/g) || [];
-  assert.equal(wa.length, 1, 'index.html : un seul lien wa.me attendu');
-  assert.ok(wa[0].includes(MESSAGE), 'index.html : message déjà rempli absent ou différent');
+  assert.equal(wa.length, 2, 'index.html : deux liens wa.me attendus (contact et partenaires)'); // 02/11/2026 : bandeau partenaires (décision de Pierre, accord du pilote)
+  assert.equal(wa.filter((l) => l.includes(MESSAGE)).length, 1, 'index.html : message déjà rempli absent ou différent'); // 02/11/2026 : bandeau partenaires (décision de Pierre, accord du pilote)
 });
