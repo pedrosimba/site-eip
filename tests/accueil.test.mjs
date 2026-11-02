@@ -72,9 +72,9 @@ test('A3 — textes exacts présents', () => {
     'Annonceurs : soyez le partenaire du mois',
     'Votre logo, votre slogan et votre contact, en haut de l\'accueil de nos applis. Nous sélectionnons des annonceurs cohérents avec chaque appli.',
     'Réserver un espace',
-    // 31/10/2026 : « WhatsApp Belgique » et le numéro personnel retirés de l'accueil (décision de Pierre, accord du pilote)
-    'WhatsApp France',
-    '+33 6 98 81 43 63',
+    // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote) — remplace « WhatsApp France » et le +33…63
+    'WhatsApp', // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
+    '+32 483 14 20 70', // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
     'pierre@eipdecision.be',
     'EIP — Economic Intelligence Partners · BCE 0839.627.446',
     'Mentions légales',
@@ -132,14 +132,14 @@ test('A9 — cartes Afrivita et Afrivita Diaspora', () => {
 test('A6 — liens de contact et mentions légales présents', () => {
   const hrefs = liens(html()).map((l) => l.href);
   // 31/10/2026 : lien WhatsApp Belgique (numéro personnel) retiré ; le lien France reste (décision de Pierre, accord du pilote)
-  for (const h of ['https://wa.me/33698814363', 'mailto:pierre@eipdecision.be', 'mentions-legales.html']) {
+  for (const h of ['https://wa.me/32483142070?text=Bonjour%20EIP%2C%20je%20viens%20du%20site%20eipdecision.be.', 'mailto:pierre@eipdecision.be', 'mentions-legales.html']) { // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
     assert.ok(hrefs.includes(h), `lien absent : ${h}`);
   }
 });
 
 test('A7 — aucune trace de l\'ancienne page', () => {
   const source = html();
-  for (const interdit of ['Zéro Oubli', 'Ombessa', 'Squad', '€ HT', '[', 'Opportunity Intelligence', '32483142070', '483 14 20 70']) {
+  for (const interdit of ['Zéro Oubli', 'Ombessa', 'Squad', '€ HT', '[', 'Opportunity Intelligence']) { // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote) — le 70 n'est plus interdit
     assert.ok(!source.includes(interdit), `index.html contient « ${interdit} »`);
   }
 });

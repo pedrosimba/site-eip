@@ -14,7 +14,8 @@ const compter = (texte, motif) => texte.split(motif).length - 1;
 const chiffres = (s) => s.replace(/\D/g, '');
 
 // Numéro France : chiffres du lien wa.me/33… de l'accueil (31/10/2026).
-const FRANCE = '33698814363';
+const NUMERO = '32483142070'; // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
+const MESSAGE = '?text=Bonjour%20EIP%2C%20je%20viens%20du%20site%20eipdecision.be.'; // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
 
 // Carte repérée par son titre.
 const carte = (titre) => {
@@ -58,7 +59,21 @@ test('P5 — numéro personnel absent de l\'accueil et des mentions légales', (
   }
 });
 
-test('P6 — numéro France présent sur l\'accueil (wa.me) et dans les mentions légales (tel:)', () => {
-  assert.ok(html().includes(`href="https://wa.me/${FRANCE}"`), 'index.html : lien wa.me France absent');
-  assert.ok(lire('mentions-legales.html').includes(`href="tel:+${FRANCE}"`), 'mentions-legales.html : lien tel: France absent');
+test('P6 — numéro unique présent sur l\'accueil (wa.me) et dans les mentions légales (tel:)', () => { // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
+  assert.ok(html().includes(`href="https://wa.me/${NUMERO}${MESSAGE}"`), 'index.html : lien wa.me +32…70 absent'); // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
+  assert.ok(lire('mentions-legales.html').includes(`href="tel:+${NUMERO}"`), 'mentions-legales.html : lien tel: +32…70 absent'); // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote)
+});
+
+// 02/11/2026 : nouveau test — numéro unique +32…70, numéros 53 et 63 retirés, message déjà rempli (décision de Pierre, accord du pilote)
+test('P7 — numéro unique +32…70 avec message déjà rempli ; numéros 53 et 63 absents', () => {
+  for (const f of ['index.html', 'mentions-legales.html']) {
+    const c = chiffres(lire(f));
+    assert.ok(c.includes(NUMERO), `${f} : numéro +32…70 absent`);
+    for (const interdit of ['32470284953', '0470284953', '33698814363']) {
+      assert.ok(!c.includes(interdit), `${f} contient un numéro retiré (…${interdit.slice(-2)})`);
+    }
+  }
+  const wa = html().match(/href="(https:\/\/wa\.me\/[^"]*)"/g) || [];
+  assert.equal(wa.length, 1, 'index.html : un seul lien wa.me attendu');
+  assert.ok(wa[0].includes(MESSAGE), 'index.html : message déjà rempli absent ou différent');
 });
