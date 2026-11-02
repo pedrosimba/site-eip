@@ -42,7 +42,7 @@ test('L1 — chaque carte d\'appli a son logo dans la vignette (conteneur, alt v
 });
 
 test('L2 — la carte de l\'appli de révision n\'a aucun logo', () => {
-  const v = vignette('Appli de révision en maths');
+  const v = vignette('Squad Révision Maths&nbsp;CEB'); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
   assert.ok(!v.includes('<img'), 'image présente dans la vignette de révision');
   assert.ok(!v.includes('logo-appli'), 'conteneur de logo présent dans la vignette de révision');
 });

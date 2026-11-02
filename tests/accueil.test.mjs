@@ -51,12 +51,12 @@ test('A3 — textes exacts présents', () => {
     'CCAPP',
     'Afrivita Diaspora',
     'Gustavita Coach',
-    'Appli de révision en maths',
+    'Squad Révision Maths CEB', // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
     'Commerces · Cameroun',
     'Bien-être · Cameroun',
     'Bien-être · Europe',
     'Bien-être · Belgique et France',
-    'Éducation · Belgique et France',
+    'Éducation · Belgique', // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
     'Le carnet de crédit numérique des boutiques de quartier. Le crédit, plus simple pour tous.',
     'Afrivita, ton coach : bouge, mange léger, retrouve ta forme.',
     // 30/10/2026 : texte de la carte Afrivita Diaspora remplacé par le texte exact décidé par Pierre.
@@ -88,23 +88,23 @@ test('A4 — badges des démos', () => {
   const texte = normaliser(html());
   // 30/10/2026 : Afrivita Diaspora passe de « Démo bientôt » à « Démo en ligne » (décision de Pierre) → 3 et 1.
   // 31/10/2026 : Gustavita Coach passe de « Démo bientôt » à « Démo en ligne » → 4 et 0 (décision de Pierre, accord du pilote)
-  assert.equal(compter(texte, 'Démo en ligne'), 4, 'Démo en ligne');
+  assert.equal(compter(texte, 'Démo en ligne'), 5, 'Démo en ligne'); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
   assert.equal(compter(texte, 'Démo bientôt'), 0, 'Démo bientôt');
-  assert.equal(compter(texte, 'En préparation'), 1, 'En préparation');
+  assert.equal(compter(texte, 'En préparation'), 0, 'En préparation'); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
 });
 
 // 30/10/2026 : titre passé de « 2 … et 3 … » à « 3 … et 2 … » : la carte Afrivita Diaspora a désormais une démo.
 // 31/10/2026 : titre passé à « 4 … et 1 … » : la carte Gustavita Coach a désormais une démo (décision de Pierre, accord du pilote)
-test('A5 — 4 liens « Essayer la démo » et 1 lien « Être prévenu »', () => {
+test('A5 — 5 liens « Essayer la démo » et aucun lien « Être prévenu »', () => { // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
   const tous = liens(html());
   const essayer = tous.filter((l) => l.texte === 'Essayer la démo').map((l) => l.href);
   // 30/10/2026 : Afrivita (Cameroun) → /afrivita/cameroun/ ; Afrivita Diaspora → /afrivita/ (décisions de Pierre).
   // 31/10/2026 : 4e lien, Gustavita Coach → /gustavita/ (décision de Pierre, accord du pilote)
-  assert.deepEqual(essayer, ['https://eipdecision.be/ccapp/', 'https://eipdecision.be/afrivita/cameroun/', 'https://eipdecision.be/afrivita/', 'https://eipdecision.be/gustavita/']);
+  assert.deepEqual(essayer, ['https://eipdecision.be/ccapp/', 'https://eipdecision.be/afrivita/cameroun/', 'https://eipdecision.be/afrivita/', 'https://eipdecision.be/gustavita/', 'https://eipdecision.be/squad-maths-ceb/web/']); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
   const prevenu = tous.filter((l) => l.texte === 'Être prévenu').map((l) => l.href);
   // 30/10/2026 : un « Être prévenu » de moins (celui d'Afrivita Diaspora).
   // 31/10/2026 : encore un de moins (celui de Gustavita Coach) ; reste celui de l'appli de révision (décision de Pierre, accord du pilote)
-  assert.deepEqual(prevenu, ['#contact']);
+  assert.deepEqual(prevenu, []); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
 });
 
 // 30/10/2026 : nouveau test — chaque carte Afrivita, carte par carte (titre, marché, badge, bouton, lien).
@@ -139,7 +139,7 @@ test('A6 — liens de contact et mentions légales présents', () => {
 
 test('A7 — aucune trace de l\'ancienne page', () => {
   const source = html();
-  for (const interdit of ['Zéro Oubli', 'Ombessa', 'Squad', '€ HT', '[', 'Opportunity Intelligence']) { // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote) — le 70 n'est plus interdit
+  for (const interdit of ['Zéro Oubli', 'Ombessa', '€ HT', '[', 'Opportunity Intelligence']) { // 02/11/2026 : numéro unique +32…70 (décision de Pierre, accord du pilote) — le 70 n'est plus interdit // 02/11/2026 : nom Squad affiché sur décision de Pierre (accord du pilote)
     assert.ok(!source.includes(interdit), `index.html contient « ${interdit} »`);
   }
 });

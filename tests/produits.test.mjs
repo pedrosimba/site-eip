@@ -46,7 +46,7 @@ test('P3 — carte Gustavita Coach : démo en ligne et bouton vers /gustavita/',
 test('P4 — badges et prix de l\'accueil', () => {
   const source = html();
   assert.equal(compter(source, 'Démo bientôt'), 0, 'Démo bientôt');
-  assert.equal(compter(source, 'Démo en ligne'), 4, 'Démo en ligne');
+  assert.equal(compter(source, 'Démo en ligne'), 5, 'Démo en ligne'); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
   assert.equal(compter(source, '29,90'), 2, '29,90 (Diaspora et Gustavita, texte inchangé)');
   assert.ok(!source.includes('/gustavita/app'), 'index.html contient « /gustavita/app »');
 });
