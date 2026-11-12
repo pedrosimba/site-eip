@@ -99,3 +99,8 @@ test('S6 — aucun src d\'image ne pointe vers une adresse externe', () => {
   assert.ok(srcs.length > 0, 'aucune image trouvée');
   for (const s of srcs) assert.ok(!/^(https?:)?\/\//i.test(s) && !s.startsWith('data:'), `src externe : ${s}`);
 });
+
+// 12/11/2026 : décision du pilote — sur les cartes avec visuel, le petit logo est masqué.
+test('S7 — sur les cartes avec visuel, le petit logo est masqué', () => {
+  assert.ok(html().includes('.vignette:has(> .visuel) .logo-appli{display:none}'), 'règle CSS .vignette:has(> .visuel) .logo-appli{display:none} absente de index.html');
+});
