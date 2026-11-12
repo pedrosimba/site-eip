@@ -10,6 +10,7 @@ const html = () => readFileSync(join(RACINE, 'index.html'), 'utf8');
 
 const CARTES = [
   ['CCAPP', 'ccapp'],
+  ['Afrivita', 'afrivita-cameroun'],
   ['Afrivita Diaspora', 'afrivita-diaspora'],
   ['Gustavita Coach', 'gustavita'],
   ['Squad Révision Maths&nbsp;CEB', 'squad'],
@@ -85,13 +86,12 @@ test('S4 — chaque <img> est dans un lien identique au bouton de SA carte', () 
   }
 });
 
-test('S5 — la carte Afrivita (Cameroun) n\'a aucun visuel et garde sa vignette actuelle', () => {
-  const v = vignette(carte('Afrivita'));
-  assert.ok(!v.includes('visuels/'), 'visuel présent sur la carte Afrivita Cameroun');
-  assert.equal(
-    v,
-    '<div class="vignette" style="background:#F6EBD6" aria-hidden="true"><div class="logo-appli"><img src="logos/afrivita.svg" alt="" width="32" height="32"></div><div class="ecran"><i style="height:14px;border-radius:5px;background:#2F6B3F"></i><i style="height:44px;background:#FBF3E4"></i><i style="height:28px;background:#F08A24"></i></div></div>',
-  );
+// 12/11/2026 : visuel C validé par Pierre pour Afrivita Cameroun ; S5 vérifie désormais que les 6 cartes ont un visuel (accord du pilote).
+test('S5 — les 6 cartes produits ont chacune un visuel', () => {
+  assert.equal(CARTES.length, 6, 'il doit y avoir 6 cartes produits');
+  for (const [titre] of CARTES) {
+    assert.ok(vignette(carte(titre)).includes('visuels/'), `${titre} : aucun visuel dans la vignette`);
+  }
 });
 
 test('S6 — aucun src d\'image ne pointe vers une adresse externe', () => {
