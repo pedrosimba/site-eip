@@ -40,12 +40,13 @@ test('V5 — bouton « Ouvrir l\'appli » vers https://eipdecision.be/virees/', 
   assert.ok(carte().includes('<a class="bouton plein petit" href="https://eipdecision.be/virees/">Ouvrir l\'appli</a>'), 'virées : bouton');
 });
 
-// 24/11/2026 : cartes Anti-Gaspi et Elya ajoutées après Virées (accord du pilote).
-test('V6 — la carte Virées est suivie de la carte Anti-Gaspi du Coin', () => {
+// 24/11/2026 : cartes classées de la plus récente à la plus ancienne (décision de Pierre, accord du pilote).
+test('V6 — la carte Virées est précédée d\'Anti-Gaspi du Coin et suivie de Gustavita Coach', () => {
   const toutes = cartes();
   assert.equal(toutes.length, 8, 'huit cartes attendues');
-  assert.ok(toutes[5].includes(`<h3 class="titre">${TITRE}</h3>`), 'Virées doit être la 6e carte');
-  assert.ok(toutes[6].includes('<h3 class="titre">Anti-Gaspi du Coin</h3>'), 'Anti-Gaspi du Coin doit suivre Virées');
+  assert.ok(toutes[1].includes('<h3 class="titre">Anti-Gaspi du Coin</h3>'), 'Anti-Gaspi du Coin doit précéder Virées');
+  assert.ok(toutes[2].includes(`<h3 class="titre">${TITRE}</h3>`), 'Virées doit être la 3e carte');
+  assert.ok(toutes[3].includes('<h3 class="titre">Gustavita Coach</h3>'), 'Gustavita Coach doit suivre Virées');
   const source = html();
   const finCarte = source.lastIndexOf('</article>');
   const partenaires = source.indexOf('<section id="partenaires"');

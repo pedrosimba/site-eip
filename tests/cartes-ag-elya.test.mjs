@@ -85,12 +85,13 @@ test('G5 — visuel, logo et fond de vignette (même structure que la carte Vir�
   }
 });
 
-test('G6 — ordre : … Virées - Mons, Anti-Gaspi du Coin, Elya, puis #partenaires', () => {
+// 24/11/2026 : cartes classées de la plus récente à la plus ancienne (décision de Pierre, accord du pilote).
+test('G6 — Elya, Anti-Gaspi du Coin et Virées - Mons en tête, puis #partenaires après la dernière carte', () => {
   const toutes = cartes();
   assert.equal(toutes.length, 8, 'huit cartes attendues');
-  assert.ok(toutes[5].includes('<h3 class="titre">Virées&nbsp;- Mons</h3>'), '6e carte : Virées');
-  assert.ok(toutes[6].includes(`<h3 class="titre">${AG.titre}</h3>`), '7e carte : Anti-Gaspi du Coin');
-  assert.ok(toutes[7].includes(`<h3 class="titre">${ELYA.titre}</h3>`), '8e carte : Elya');
+  assert.ok(toutes[0].includes(`<h3 class="titre">${ELYA.titre}</h3>`), '1re carte : Elya');
+  assert.ok(toutes[1].includes(`<h3 class="titre">${AG.titre}</h3>`), '2e carte : Anti-Gaspi du Coin');
+  assert.ok(toutes[2].includes('<h3 class="titre">Virées&nbsp;- Mons</h3>'), '3e carte : Virées');
   const source = html();
   const finCarte = source.lastIndexOf('</article>');
   const partenaires = source.indexOf('<section id="partenaires"');
@@ -148,4 +149,13 @@ test('G11 — toujours exactement 5 « Démo en ligne » et 5 « Essayer la dém
   const source = html();
   assert.equal(source.split('>Démo en ligne<').length - 1, 5);
   assert.equal(source.split('>Essayer la démo<').length - 1, 5);
+});
+
+// 24/11/2026 : cartes classées de la plus récente à la plus ancienne (décision de Pierre, accord du pilote).
+test('G12 — ordre des 8 cartes, de la plus récente à la plus ancienne', () => {
+  const ordre = ['Elya', 'Anti-Gaspi du Coin', 'Virées&nbsp;- Mons', 'Gustavita Coach', 'Afrivita Diaspora', 'Afrivita', 'CCAPP', 'Squad Révision Maths&nbsp;CEB'];
+  const titres = cartes().map((x) => x.match(/<h3 class="titre">([^<]*)<\/h3>/)[1]);
+  assert.deepEqual(titres, ordre);
+  const source = html();
+  assert.ok(source.indexOf('<section id="partenaires"') > source.lastIndexOf('</article>'), '#partenaires doit suivre la dernière carte (Squad)');
 });

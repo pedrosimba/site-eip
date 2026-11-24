@@ -100,7 +100,8 @@ test('A5 — 5 liens « Essayer la démo » et aucun lien « Être prévenu »',
   const essayer = tous.filter((l) => l.texte === 'Essayer la démo').map((l) => l.href);
   // 30/10/2026 : Afrivita (Cameroun) → /afrivita/cameroun/ ; Afrivita Diaspora → /afrivita/ (décisions de Pierre).
   // 31/10/2026 : 4e lien, Gustavita Coach → /gustavita/ (décision de Pierre, accord du pilote)
-  assert.deepEqual(essayer, ['https://eipdecision.be/ccapp/', 'https://eipdecision.be/afrivita/cameroun/', 'https://eipdecision.be/afrivita/', 'https://eipdecision.be/gustavita/', 'https://eipdecision.be/squad-maths-ceb/web/']); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
+  // 24/11/2026 : cartes classées de la plus récente à la plus ancienne (décision de Pierre, accord du pilote).
+  assert.deepEqual(essayer, ['https://eipdecision.be/gustavita/', 'https://eipdecision.be/afrivita/', 'https://eipdecision.be/afrivita/cameroun/', 'https://eipdecision.be/ccapp/', 'https://eipdecision.be/squad-maths-ceb/web/']); // 02/11/2026 : carte révision en ligne (décision de Pierre, accord du pilote)
   const prevenu = tous.filter((l) => l.texte === 'Être prévenu').map((l) => l.href);
   // 30/10/2026 : un « Être prévenu » de moins (celui d'Afrivita Diaspora).
   // 31/10/2026 : encore un de moins (celui de Gustavita Coach) ; reste celui de l'appli de révision (décision de Pierre, accord du pilote)
