@@ -10,8 +10,10 @@ const html = () => readFileSync(join(RACINE, 'index.html'), 'utf8');
 
 const AU = 'Partenaires recherchés au Cameroun et en Côte d\'Ivoire';
 const SIMPLE = 'Partenaires recherchés';
+// 24/11/2026 : zones partenaires d'Anti-Gaspi du Coin (décision de Pierre, accord du pilote).
+const AG = "Partenaires recherchés en Belgique et en France, puis au Luxembourg, en Allemagne, aux Pays-Bas…";
 const bandeau = (texte) => `<a class="bandeau-partenaires" href="#partenaires">${texte}</a>`;
-const VISEES = [['Anti-Gaspi du Coin', SIMPLE], ['Afrivita', AU], ['Afrivita Diaspora', SIMPLE], ['CCAPP', AU]];
+const VISEES = [['Anti-Gaspi du Coin', AG], ['Afrivita', AU], ['Afrivita Diaspora', SIMPLE], ['CCAPP', AU]];
 const AUTRES = ['Elya', 'Virées&nbsp;- Mons', 'Gustavita Coach', 'Squad Révision Maths&nbsp;CEB'];
 
 const cartes = () => [...html().matchAll(/<article class="carte">([\s\S]*?)<\/article>/g)].map((m) => m[1]);
