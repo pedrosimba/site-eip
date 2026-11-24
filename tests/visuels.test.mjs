@@ -15,6 +15,9 @@ const CARTES = [
   ['Gustavita Coach', 'gustavita'],
   ['Squad Révision Maths&nbsp;CEB', 'squad'],
   ['Virées&nbsp;- Mons', 'virees'],
+  // 24/11/2026 : cartes Anti-Gaspi et Elya ajoutées après Virées (accord du pilote).
+  ['Anti-Gaspi du Coin', 'anti-gaspi'],
+  ['Elya', 'elya'],
 ];
 
 const carte = (titre) => {
@@ -87,8 +90,9 @@ test('S4 — chaque <img> est dans un lien identique au bouton de SA carte', () 
 });
 
 // 12/11/2026 : visuel C validé par Pierre pour Afrivita Cameroun ; S5 vérifie désormais que les 6 cartes ont un visuel (accord du pilote).
-test('S5 — les 6 cartes produits ont chacune un visuel', () => {
-  assert.equal(CARTES.length, 6, 'il doit y avoir 6 cartes produits');
+// 24/11/2026 : cartes Anti-Gaspi et Elya ajoutées après Virées (accord du pilote) → 8 cartes.
+test('S5 — les 8 cartes produits ont chacune un visuel', () => {
+  assert.equal(CARTES.length, 8, 'il doit y avoir 8 cartes produits');
   for (const [titre] of CARTES) {
     assert.ok(vignette(carte(titre)).includes('visuels/'), `${titre} : aucun visuel dans la vignette`);
   }

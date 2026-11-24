@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="logoEtiquette" viewBox="0 -52 300 192" role="img" aria-label="Anti-Gaspi du Coin" focusable="false">
+  <line class="tigeLogo" x1="150" y1="-38" x2="150" y2="-6" stroke="#7A5A14" stroke-width="3" stroke-linecap="round"/>
+  <ellipse class="feuilleLogo" cx="150" cy="-40" rx="5" ry="10" fill="#FFFCF6" stroke="#C9A24A" stroke-width="1.5"/>
+  <ellipse class="feuilleLogo" cx="136" cy="-20" rx="10" ry="5" fill="#FFFCF6" stroke="#C9A24A" stroke-width="1.5" transform="rotate(-35 136 -20)"/>
+  <ellipse class="feuilleLogo" cx="164" cy="-20" rx="10" ry="5" fill="#FFFCF6" stroke="#C9A24A" stroke-width="1.5" transform="rotate(35 164 -20)"/>
+  <rect x="2" y="2" width="296" height="136" rx="10" fill="#FFFFFF" stroke="#B8913A" stroke-width="4"/>
+  <rect x="12" y="12" width="276" height="116" rx="6" fill="none" stroke="#C9A24A" stroke-width="2"/>
+  <text x="150" y="70" text-anchor="middle" font-family="ui-serif, Georgia, 'Times New Roman', serif" font-size="30" fill="#1F3D2B">Anti-Gaspi</text>
+  <line x1="78" y1="88" x2="128" y2="88" stroke="#C9A24A" stroke-width="2"/>
+  <path class="etoileLogo" data-y="88" d="M150,81 151.8,85.6 156.7,85.8 152.9,88.9 154.1,93.7 150,91 145.9,93.7 147.2,88.9 143.3,85.8 148.2,85.6Z" fill="#C9A24A"/>
+  <line x1="172" y1="88" x2="222" y2="88" stroke="#C9A24A" stroke-width="2"/>
+  <text x="150" y="118" text-anchor="middle" font-family="ui-serif, Georgia, 'Times New Roman', serif" font-size="14" letter-spacing="4" fill="#7A5A14">DU COIN</text>
+</svg>
